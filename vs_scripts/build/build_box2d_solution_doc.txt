@@ -1,0 +1,25 @@
+Documentation: build_box2d_solution_doc.bat
+
+Purpose:
+Automate Box2D build process in MSVC build.
+in_time_engine is set up to through Property Manager to use property_sheets\box2d\box2d_properties_include_and_lib.props to look for the output files generated from this script.
+This script generates include and lib directories with their respective .h and .lib files.
+Below are the list of expected arguments to run the script manually:
+
+Argument #1 expected values
+PLATFORM=x64
+PLATFORM=x86
+
+Argument #2 expected values
+SOLUTION_DIR=<In Time Engine root directory>\in_time_engine\
+
+Argument #3 expected values
+CONFIGURATION=Debug
+CONFIGURATION=Release
+
+Example of running the script manually:
+.\build_box2d_solution.bat "x64" "D:\source\vs_repos\in_time_engine\" "Debug"
+.\build_box2d_solution.bat "x64" "D:\source\vs_repos\in_time_engine\" "Release"
+
+Instructions to automate BOX2D build from MSVC:
+- Go to "Property Manager -> Build Events -> Pre-Build Event -> Command Line" and paste: call "$(SolutionDir)vs_scripts\build\build_box2d_solution.bat" "$(Platform)" "$(SolutionDir)" "$(ConfigurationName)"

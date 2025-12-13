@@ -11,7 +11,7 @@ PLATFORM=x64
 PLATFORM=x86
 
 Argument #2 expected values
-SOLUTION_DIR=<In Time Engine root directory>/in_time_engine\
+SOLUTION_DIR=<In Time Engine root directory>\in_time_engine\
 
 Argument #3 expected values
 CONFIGURATION=Debug
