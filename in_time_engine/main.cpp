@@ -18,7 +18,7 @@ template <typename T> void printArray(T* array, size_t size) {
 		else
 			std::cout << ", ";
 	}
-}
+}	
 
 int main(int argc, char* argv[]) {
 	std::cout << "Program operating" << std::endl;
@@ -31,8 +31,8 @@ int main(int argc, char* argv[]) {
 	printArray<float>((float*)&vec4, 4);
 	std::cout << std::endl;
 
-#if degined(GLFW_STATIC)
-	std::cout << "GLFW_STATIC is defined."
+#if defined(GLFW_STATIC)
+	std::cout << "GLFW_STATIC is defined." << std::endl;
 #endif
 
 	std::cout << "Program terminating" << std::endl;

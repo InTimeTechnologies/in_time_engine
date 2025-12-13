@@ -42,9 +42,10 @@
     <Import Project="..\property_sheets\glm\glm_properties_include.props" />
     <Import Project="..\property_sheets\glfw\glfw_properties_solution_build.props" />
     <Import Project="..\property_sheets\glfw\glfw_properties_include_and_lib.props" />
+    <Import Project="..\property_sheets\box2d\box2d_properties_solution_build.props" />
     <Import Project="..\property_sheets\box2d\box2d_properties_include_and_lib_dir.props" />
     <Import Project="..\property_sheets\box2d\box2d_properties_debug_lib.props" />
-    <Import Project="..\property_sheets\box2d\box2d_properties_solution_build.props" />
+    <Import Project="..\property_sheets\imgui\imgui_properties_include.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -52,9 +53,10 @@
     <Import Project="..\property_sheets\glm\glm_properties_include.props" />
     <Import Project="..\property_sheets\glfw\glfw_properties_solution_build.props" />
     <Import Project="..\property_sheets\glfw\glfw_properties_include_and_lib.props" />
+    <Import Project="..\property_sheets\box2d\box2d_properties_solution_build.props" />
     <Import Project="..\property_sheets\box2d\box2d_properties_include_and_lib_dir.props" />
     <Import Project="..\property_sheets\box2d\box2d_properties_release_lib.props" />
-    <Import Project="..\property_sheets\box2d\box2d_properties_solution_build.props" />
+    <Import Project="..\property_sheets\imgui\imgui_properties_include.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -88,6 +90,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\dependencies\imgui\imgui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="..\dependencies\imgui\imgui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\dependencies\imgui\imgui\imgui.cpp" />
+    <ClCompile Include="..\dependencies\imgui\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\dependencies\imgui\imgui\imgui_tables.cpp" />
+    <ClCompile Include="..\dependencies\imgui\imgui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
