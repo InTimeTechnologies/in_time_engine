@@ -39,12 +39,14 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\property_sheets\glm\glm_properties_experimental.props" />
-    <Import Project="..\property_sheets\glm\glfw_properties_common.props" />
+    <Import Project="..\property_sheets\glm\glm_properties_common.props" />
+    <Import Project="..\property_sheets\glfw\glfw_properties_solution_build.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\property_sheets\glm\glm_properties_experimental.props" />
-    <Import Project="..\property_sheets\glm\glfw_properties_common.props" />
+    <Import Project="..\property_sheets\glm\glm_properties_common.props" />
+    <Import Project="..\property_sheets\glfw\glfw_properties_solution_build.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

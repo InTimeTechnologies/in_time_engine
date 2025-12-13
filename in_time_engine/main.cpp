@@ -5,6 +5,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+// Dependencies | glfw
+
 // Functions
 template <typename T> void printArray(T* array, size_t size) {
 	std::cout << "{ ";
