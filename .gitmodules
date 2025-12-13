@@ -4,3 +4,6 @@
 [submodule "dependencies/glfw"]
 	path = dependencies/glfw
 	url = https://github.com/glfw/glfw.git
+[submodule "dependencies/box2d"]
+	path = dependencies/box2d
+	url = https://github.com/erincatto/box2d.git
