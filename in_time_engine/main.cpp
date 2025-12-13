@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 // Dependencies | glfw
+#include <GLFW/glfw3.h>
 
 // Functions
 template <typename T> void printArray(T* array, size_t size) {
@@ -21,10 +22,18 @@ template <typename T> void printArray(T* array, size_t size) {
 
 int main(int argc, char* argv[]) {
 	std::cout << "Program operating" << std::endl;
+
+	glfwInit();
+	glfwCreateWindow(100, 100, "Test", nullptr, nullptr);
+	glfwCreateWindow(500, 500, "Test", nullptr, nullptr);
 	
 	glm::vec4 vec4{ 1, 1, 0, 1 };
 	printArray<float>((float*)&vec4, 4);
 	std::cout << std::endl;
+
+#if degined(GLFW_STATIC)
+	std::cout << "GLFW_STATIC is defined."
+#endif
 
 	std::cout << "Program terminating" << std::endl;
 }

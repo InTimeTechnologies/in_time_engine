@@ -5,13 +5,8 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <PreBuildEvent>
-      <Command>cd ..\dependencies\glfw
-if not exist build mkdir build
-cd build
-
-cmake .. -G "Visual Studio 17 2022" -A $(Platform) -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX="$(SolutionDir)install\glfw\$(ConfigurationName)"
-cmake --build . --config $(ConfigurationName) --target install -- /m</Command>
-      <Message>Creates Visual Studio 2022 GLFW.sln in "$(SolutionDir)dependencies\glfw\build". It then invokes CMake again to generate include and lib directories in </Message>
+      <Command>call "$(SolutionDir)vs_scripts\build\build_glfw_solution.bat" "$(Platform)" "$(SolutionDir)" "$(ConfigurationName)"</Command>
+      <Message>Creating glfw solution and compiling it to create include and lib files.</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup />
