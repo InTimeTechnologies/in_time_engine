@@ -1,7 +1,6 @@
 <Solution>
   <Configurations>
     <Platform Name="x64" />
-    <Platform Name="x86" />
   </Configurations>
-  <Project Path="in_time_engine/in_time_engine.vcxproj" />
+  <Project Path="in_time_engine/in_time_engine.vcxproj" Id="b1b8ec65-acaa-4df2-8296-6af4df5f2ae0" />
 </Solution>
