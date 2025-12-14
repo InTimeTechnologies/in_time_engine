@@ -62,7 +62,7 @@ namespace nlohmann {
 			{ "name", bodyDef.name },
 			{ "enableSleep", bodyDef.enableSleep },
 			{ "isAwake", bodyDef.isAwake },
-			{ "fixedRotation", bodyDef.fixedRotation },
+			//{ "fixedRotation", bodyDef.fixedRotation },
 			{ "isBullet", bodyDef.isBullet },
 			{ "isEnabled", bodyDef.isEnabled }
 		};
@@ -81,7 +81,7 @@ namespace nlohmann {
 			j["name"] = b2Body_GetName(id),
 			j["enableSleep"] = b2Body_IsSleepEnabled(id),
 			j["isAwake"] = b2Body_IsAwake(id),
-			j["fixedRotation"] = b2Body_IsFixedRotation(id),
+			//j["fixedRotation"] = b2Body_IsFixedRotation(id),
 			j["isBullet"] = b2Body_IsBullet(id),
 			j["isEnabled"] = b2Body_IsEnabled(id)
 		};
@@ -132,7 +132,7 @@ namespace nlohmann {
 	}
 	inline void to_json(json& j, const b2ShapeId id) {
 		j = {
-			{ "material", b2Shape_GetMaterial(id) },
+			//{ "material", b2Shape_GetMaterial(id) },
 			{ "density", b2Shape_GetDensity(id) },
 			{ "filter", b2Shape_GetFilter(id) },
 			{ "isSensor", b2Shape_IsSensor(id) },
@@ -252,7 +252,7 @@ namespace nlohmann {
 		bodyDef.name = name.c_str();
 		j.at("enableSleep").get_to(bodyDef.enableSleep);
 		j.at("isAwake").get_to(bodyDef.isAwake);
-		j.at("fixedRotation").get_to(bodyDef.fixedRotation);
+		//j.at("fixedRotation").get_to(bodyDef.fixedRotation);
 		j.at("isBullet").get_to(bodyDef.isBullet);
 		j.at("isEnabled").get_to(bodyDef.isEnabled);
 	}
@@ -300,7 +300,7 @@ namespace nlohmann {
 		b2Body_SetName(id, name.c_str());
 		b2Body_EnableSleep(id, enableSleep);
 		b2Body_SetAwake(id, isAwake);
-		b2Body_SetFixedRotation(id, fixedRotation);
+		//b2Body_SetFixedRotation(id, fixedRotation);
 		b2Body_SetBullet(id, isBullet);
 		if (isEnabled)
 			b2Body_Enable(id);
@@ -463,7 +463,7 @@ namespace nlohmann {
 			{ "name", bodyDef.name },
 			{ "enableSleep", bodyDef.enableSleep },
 			{ "isAwake", bodyDef.isAwake },
-			{ "fixedRotation", bodyDef.fixedRotation },
+			//{ "fixedRotation", bodyDef.fixedRotation },
 			{ "isBullet", bodyDef.isBullet },
 			{ "isEnabled", bodyDef.isEnabled }
 		};
@@ -483,7 +483,7 @@ namespace nlohmann {
 			//j["userData"] = b2Body_GetUserData(id),
 			j["enableSleep"] = b2Body_IsSleepEnabled(id),
 			j["isAwake"] = b2Body_IsAwake(id),
-			j["fixedRotation"] = b2Body_IsFixedRotation(id),
+			//j["fixedRotation"] = b2Body_IsFixedRotation(id),
 			j["isBullet"] = b2Body_IsBullet(id),
 			j["isEnabled"] = b2Body_IsEnabled(id)
 		};
@@ -640,7 +640,7 @@ namespace nlohmann {
 		bodyDef.name = name.c_str();
 		j.at("enableSleep").get_to(bodyDef.enableSleep);
 		j.at("isAwake").get_to(bodyDef.isAwake);
-		j.at("fixedRotation").get_to(bodyDef.fixedRotation);
+		//j.at("fixedRotation").get_to(bodyDef.fixedRotation);
 		j.at("isBullet").get_to(bodyDef.isBullet);
 		j.at("isEnabled").get_to(bodyDef.isEnabled);
 	}
@@ -688,7 +688,7 @@ namespace nlohmann {
 		b2Body_SetName(id, name.c_str());
 		b2Body_EnableSleep(id, enableSleep);
 		b2Body_SetAwake(id, isAwake);
-		b2Body_SetFixedRotation(id, fixedRotation);
+		//b2Body_SetFixedRotation(id, fixedRotation);
 		b2Body_SetBullet(id, isBullet);
 		if (isEnabled)
 			b2Body_Enable(id);
