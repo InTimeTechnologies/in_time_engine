@@ -403,7 +403,6 @@ void it::InTimeEngine::render() {
 
 	#endif
 
-	#if defined(OPENGL_ENGINE)
 	gl::Engine* glEngine = gl::Engine::s_getSingleton();
 	if (glEngine == nullptr)
 		return;
@@ -417,7 +416,6 @@ void it::InTimeEngine::render() {
 	GPUTransform::s_synch();
 	glEngine->render();
 	glEngine->swapBuffers();
-	#endif
 }
 void it::InTimeEngine::postRender() {
 	for (RenderEvent* iRender : RenderEvent::s_renderList)
