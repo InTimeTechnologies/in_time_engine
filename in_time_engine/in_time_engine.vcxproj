@@ -79,6 +79,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -95,6 +96,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,7 +110,136 @@
     <ClCompile Include="..\dependencies\imgui\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="glfw_engine\GLFWEngine.cpp" />
+    <ClCompile Include="glfw_engine\GLFWInput.cpp" />
+    <ClCompile Include="glfw_engine\GLFWJoysticManager.cpp" />
+    <ClCompile Include="glfw_engine\GLFWWindow.cpp" />
+    <ClCompile Include="glfw_engine\GLFWWindowManager.cpp" />
+    <ClCompile Include="gl_engine\GLBuffer.cpp" />
+    <ClCompile Include="gl_engine\GLCamera.cpp" />
+    <ClCompile Include="gl_engine\GLCamera2D.cpp" />
+    <ClCompile Include="gl_engine\GLCamera3D.cpp" />
+    <ClCompile Include="gl_engine\GLDebug.cpp" />
+    <ClCompile Include="gl_engine\GLEngine.cpp" />
+    <ClCompile Include="gl_engine\GLPointRenderer.cpp" />
+    <ClCompile Include="gl_engine\GLProgram.cpp" />
+    <ClCompile Include="gl_engine\GLShader.cpp" />
+    <ClCompile Include="gl_engine\GLTexture.cpp" />
+    <ClCompile Include="gl_engine\GLTransform.cpp" />
+    <ClCompile Include="gl_engine\object\Circle.cpp" />
+    <ClCompile Include="gl_engine\object\GLLine.cpp" />
+    <ClCompile Include="gl_engine\object\GLMultiLine.cpp" />
+    <ClCompile Include="gl_engine\object\GLRenderableSprite.cpp" />
+    <ClCompile Include="gl_engine\object\GLTriangle.cpp" />
+    <ClCompile Include="gl_engine\object\GLTriangleFan.cpp" />
+    <ClCompile Include="gl_engine\object\GLTriangleStrip.cpp" />
+    <ClCompile Include="in_time_editor\ComponentAdderPopupUI.cpp" />
+    <ClCompile Include="in_time_editor\EngineTimeUI.cpp" />
+    <ClCompile Include="in_time_editor\GameObjectUI.cpp" />
+    <ClCompile Include="in_time_editor\HierarchyUI.cpp" />
+    <ClCompile Include="in_time_editor\InspectorUI.cpp" />
+    <ClCompile Include="in_time_editor\InTimeEditor.cpp" />
+    <ClCompile Include="in_time_engine\Component.cpp" />
+    <ClCompile Include="in_time_engine\ComponentManager.cpp" />
+    <ClCompile Include="in_time_engine\ComponentRegistry.cpp" />
+    <ClCompile Include="in_time_engine\EngineEvents.cpp" />
+    <ClCompile Include="in_time_engine\GameObject.cpp" />
+    <ClCompile Include="in_time_engine\GameObjectManager.cpp" />
+    <ClCompile Include="in_time_engine\gpu_component\Camera2D.cpp" />
+    <ClCompile Include="in_time_engine\gpu_component\GPUTransform.cpp" />
+    <ClCompile Include="in_time_engine\Image.cpp" />
+    <ClCompile Include="in_time_engine\InTimeEngine.cpp" />
+    <ClCompile Include="in_time_engine\object\Timer.cpp" />
+    <ClCompile Include="in_time_engine\physics_engine_2d\PhysicsEngine2D.cpp" />
+    <ClCompile Include="in_time_engine\physics_engine_2d\RigidBodyB2D.cpp" />
+    <ClCompile Include="in_time_engine\physics_engine_2d\ShapeB2D.cpp" />
+    <ClCompile Include="in_time_engine\Resource.cpp" />
+    <ClCompile Include="in_time_engine\ResourceManager.cpp" />
+    <ClCompile Include="in_time_engine\Scene.cpp" />
+    <ClCompile Include="in_time_engine\SceneManager.cpp" />
+    <ClCompile Include="in_time_engine\Time.cpp" />
+    <ClCompile Include="in_time_engine\Transform.cpp" />
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="glfw_engine\GLFWEngine.h" />
+    <ClInclude Include="glfw_engine\GLFWInput.h" />
+    <ClInclude Include="glfw_engine\GLFWJoystick.h" />
+    <ClInclude Include="glfw_engine\GLFWJoystickAxis.h" />
+    <ClInclude Include="glfw_engine\GLFWJoystickAxisCode.h" />
+    <ClInclude Include="glfw_engine\GLFWJoystickButton.h" />
+    <ClInclude Include="glfw_engine\GLFWJoystickButtonCode.h" />
+    <ClInclude Include="glfw_engine\GLFWJoystickCode.h" />
+    <ClInclude Include="glfw_engine\GLFWJoystickManager.h" />
+    <ClInclude Include="glfw_engine\GLFWKey.h" />
+    <ClInclude Include="glfw_engine\GLFWKeyCode.h" />
+    <ClInclude Include="glfw_engine\GLFWMouseButton.h" />
+    <ClInclude Include="glfw_engine\GLFWMouseButtonCode.h" />
+    <ClInclude Include="glfw_engine\GLFWWindow.h" />
+    <ClInclude Include="glfw_engine\GLFWWindowManager.h" />
+    <ClInclude Include="gl_engine\GLBuffer.h" />
+    <ClInclude Include="gl_engine\GLCamera.h" />
+    <ClInclude Include="gl_engine\GLCamera2D.h" />
+    <ClInclude Include="gl_engine\GLCamera3D.h" />
+    <ClInclude Include="gl_engine\GLDataType.h" />
+    <ClInclude Include="gl_engine\GLDebug.h" />
+    <ClInclude Include="gl_engine\GLEngine.h" />
+    <ClInclude Include="gl_engine\GLHeader.h" />
+    <ClInclude Include="gl_engine\GLPointRenderer.h" />
+    <ClInclude Include="gl_engine\GLPrimitive.h" />
+    <ClInclude Include="gl_engine\GLProgram.h" />
+    <ClInclude Include="gl_engine\GLShader.h" />
+    <ClInclude Include="gl_engine\GLTexture.h" />
+    <ClInclude Include="gl_engine\GLTime.h" />
+    <ClInclude Include="gl_engine\GLTransform.h" />
+    <ClInclude Include="gl_engine\object\GLCircle.h" />
+    <ClInclude Include="gl_engine\object\GLLine.h" />
+    <ClInclude Include="gl_engine\object\GLMultiLine.h" />
+    <ClInclude Include="gl_engine\object\GLPoint.h" />
+    <ClInclude Include="gl_engine\object\GLRenderableSprite.h" />
+    <ClInclude Include="gl_engine\object\GLTriangle.h" />
+    <ClInclude Include="gl_engine\object\GLTriangleFan.h" />
+    <ClInclude Include="gl_engine\object\GLTriangleStrip.h" />
+    <ClInclude Include="in_time_editor\ComponentAdderPopupUI.h" />
+    <ClInclude Include="in_time_editor\EngineTimeUI.h" />
+    <ClInclude Include="in_time_editor\GameObjectUI.h" />
+    <ClInclude Include="in_time_editor\HierarchyUI.h" />
+    <ClInclude Include="in_time_editor\InspectorUI.h" />
+    <ClInclude Include="in_time_editor\InTimeEditor.h" />
+    <ClInclude Include="in_time_engine\Component.h" />
+    <ClInclude Include="in_time_engine\ComponentManager.h" />
+    <ClInclude Include="in_time_engine\ComponentRegistry.h" />
+    <ClInclude Include="in_time_engine\component\EmptyComponent.h" />
+    <ClInclude Include="in_time_engine\component\PhysicsTransformation.h" />
+    <ClInclude Include="in_time_engine\component\Transformation.h" />
+    <ClInclude Include="in_time_engine\CustomComponentSerializer.h" />
+    <ClInclude Include="in_time_engine\EngineEvents.h" />
+    <ClInclude Include="in_time_engine\EngineState.h" />
+    <ClInclude Include="in_time_engine\GameObject.h" />
+    <ClInclude Include="in_time_engine\GameObjectManager.h" />
+    <ClInclude Include="in_time_engine\gpu_component\Camera2D.h" />
+    <ClInclude Include="in_time_engine\gpu_component\GPUComponents.h" />
+    <ClInclude Include="in_time_engine\gpu_component\GPUTransform.h" />
+    <ClInclude Include="in_time_engine\Image.h" />
+    <ClInclude Include="in_time_engine\InTimeEngine.h" />
+    <ClInclude Include="in_time_engine\json_serializer.h" />
+    <ClInclude Include="in_time_engine\LifecycleFunctions.h" />
+    <ClInclude Include="in_time_engine\ObjectStatus.h" />
+    <ClInclude Include="in_time_engine\object\CameraControl2D.h" />
+    <ClInclude Include="in_time_engine\object\FrameCounter.h" />
+    <ClInclude Include="in_time_engine\object\KeyControl.h" />
+    <ClInclude Include="in_time_engine\object\Stopwatch.h" />
+    <ClInclude Include="in_time_engine\object\Timer.h" />
+    <ClInclude Include="in_time_engine\physics_engine_2d\PhysicsEngine2D.h" />
+    <ClInclude Include="in_time_engine\physics_engine_2d\RigidBodyB2D.h" />
+    <ClInclude Include="in_time_engine\physics_engine_2d\ShapeB2D.h" />
+    <ClInclude Include="in_time_engine\Resource.h" />
+    <ClInclude Include="in_time_engine\ResourceManager.h" />
+    <ClInclude Include="in_time_engine\Scene.h" />
+    <ClInclude Include="in_time_engine\SceneManager.h" />
+    <ClInclude Include="in_time_engine\Time.h" />
+    <ClInclude Include="in_time_engine\Transform.h" />
+    <ClInclude Include="in_time_engine\VirtualResource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
