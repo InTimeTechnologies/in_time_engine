@@ -6,6 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 // Dependencies | glfw
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 // Functions
@@ -24,8 +25,12 @@ int main(int argc, char* argv[]) {
 	std::cout << "Program operating" << std::endl;
 
 	glfwInit();
-	glfwCreateWindow(100, 100, "Test", nullptr, nullptr);
-	glfwCreateWindow(500, 500, "Test", nullptr, nullptr);
+	GLFWwindow* window = glfwCreateWindow(100, 100, "Test", nullptr, nullptr);
+	glfwMakeContextCurrent(window);
+
+	if (GLEW_OK == glewInit()) {
+		std::cout << "glew init" << std::endl;
+	}
 	
 	glm::vec4 vec4{ 1, 1, 0, 1 };
 	printArray<float>((float*)&vec4, 4);
