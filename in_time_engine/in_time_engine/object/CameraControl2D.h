@@ -1,4 +1,3 @@
-#if defined(OPENGL_ENGINE) && defined(GLFW_ENGINE)
 #pragma once
 
 // Dependencies | in_time_engine
@@ -64,5 +63,3 @@ namespace it {
 			}
 	};
 }
-
-#endif

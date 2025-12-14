@@ -164,6 +164,7 @@
     <ClCompile Include="in_time_engine\Time.cpp" />
     <ClCompile Include="in_time_engine\Transform.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UserComponentSerializer.cpp" />
     <ClCompile Include="utility\IdFactory.cpp" />
     <ClCompile Include="utility\Number.cpp" />
   </ItemGroup>
@@ -246,6 +247,8 @@
     <ClInclude Include="in_time_engine\Time.h" />
     <ClInclude Include="in_time_engine\Transform.h" />
     <ClInclude Include="in_time_engine\VirtualResource.h" />
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="UserComponentSerializer.h" />
     <ClInclude Include="utility\BinaryRangeTree.h" />
     <ClInclude Include="utility\IdFactory.h" />
     <ClInclude Include="utility\Number.h" />

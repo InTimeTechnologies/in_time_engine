@@ -1,4 +1,3 @@
-#if defined(GLFW_ENGINE)
 #pragma once
 
 // Dependencies | InTimeEngine
@@ -46,4 +45,3 @@ namespace it {
 			}
 	};
 }
-#endif

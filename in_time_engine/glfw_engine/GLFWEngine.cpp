@@ -25,6 +25,9 @@
 
 #include "GLFWEngine.h"
 
+// Dependencies | std
+#include <cassert>
+
 // class Engine
 
 // Static | private
@@ -56,11 +59,13 @@ void glfw::Engine::s_monitorCallback(GLFWmonitor* monitor, int event) {
 // Constructor / Destructor
 glfw::Engine::Engine(bool createWindow) {
 	if (singleton == nullptr) {
-		glfwInit();
-		singleton = this;
-
+		int initSuccess = glfwInit();
+		assert(initSuccess && "glfw did not initiated.");
+		
 		glfwSetErrorCallback(s_errorCallback);
 		glfwSetMonitorCallback(s_monitorCallback);
+
+		singleton = this;
 	}
 
 	if (createWindow)

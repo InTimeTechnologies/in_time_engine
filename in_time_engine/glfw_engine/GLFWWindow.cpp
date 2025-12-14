@@ -57,7 +57,6 @@ namespace glfw {
 
 		glfwWindow->input.keysToReset.push_front(&glfwWindow->input.keys[keyIndex]);
 
-#if defined(IMGUI)
 		if (glfwWindow->imGuiContext != nullptr) {
 			ImGui::SetCurrentContext(glfwWindow->imGuiContext);
 			ImGuiIO& io = ImGui::GetIO();
@@ -71,7 +70,6 @@ namespace glfw {
 			io.KeyAlt = (mods & GLFW_MOD_ALT) != 0;
 			io.KeySuper = (mods & GLFW_MOD_SUPER) != 0;
 		}
-#endif
 
 		// Forward callback if anything is subscribed
 		if (static_cast<bool>(glfwWindow->keyCallback))
@@ -80,13 +78,11 @@ namespace glfw {
 	void Window::s_charCallback(GLFWwindow* window, unsigned int codepoint) {
 		Window* glfwWindow = (Window*)glfwGetWindowUserPointer(window);
 
-#if defined(IMGUI)
 		if (glfwWindow->imGuiContext != nullptr) {
 			ImGui::SetCurrentContext(glfwWindow->imGuiContext);
 			ImGuiIO& io = ImGui::GetIO();
 			io.AddInputCharacter(codepoint);
 		}
-#endif
 
 		// Forward callback if anything is subscribed
 		if (static_cast<bool>(glfwWindow->charCallback))
@@ -109,14 +105,12 @@ namespace glfw {
 	void Window::s_scrollCallback(GLFWwindow* window, double xoffset, double yoffset) {
 		Window* glfwWindow = (Window*)glfwGetWindowUserPointer(window);
 
-#if defined(IMGUI)
 		if (glfwWindow->imGuiContext != nullptr) {
 			ImGui::SetCurrentContext(glfwWindow->imGuiContext);
 			ImGuiIO& io = ImGui::GetIO();
 			io.MouseWheelH += static_cast<float>(xoffset);
 			io.MouseWheel += static_cast<float>(yoffset);
 		}
-#endif
 
 		// Forward callback if anything is subscribed
 		if (static_cast<bool>(glfwWindow->scrollCallback))
@@ -174,11 +168,9 @@ namespace glfw {
 
 		glfwWindow->input.mouseButtonsToReset.push_front(&glfwWindow->input.mouseButtons[mouseButtonIndex]);
 
-#if defined(IMGUI)
 		ImGuiIO& io = ImGui::GetIO();
 		if (button >= 0 && button < IM_ARRAYSIZE(io.MouseDown))
 			io.MouseDown[button] = (action == GLFW_PRESS);
-#endif
 
 		// Forward callback if anything is subscribed
 		if (static_cast<bool>(glfwWindow->mouseButtonCallback))
@@ -239,27 +231,19 @@ namespace glfw {
 			return;
 
 		// Set window hints prior to creation (remove this in production. This needs to be set outside of this class)	
-#if defined(VULKAN_ENGINE)
-		glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-#endif
-
-#if defined(OPENGL_ENGINE)
 		glfwWindowHint(GLFW_MAXIMIZED, true);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 		glfwWindowHint(GLFW_SAMPLES, 4);
-#endif
 
 		// Create window
 		window = glfwCreateWindow(width, height, title.c_str(), monitor, share);
 		glfwSetWindowUserPointer(window, this);
 
-#if defined(OPENGL_ENGINE)
 		glfwMakeContextCurrent(window);
 		bool glewInitiated = glewInit();
 		assert(glewInitiated == GLEW_OK);
-#endif
 
 		// Set callbacks
 		glfwSetKeyCallback(window, s_keyCallback);

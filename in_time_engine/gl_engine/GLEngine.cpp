@@ -22,8 +22,9 @@ namespace gl {
 		// Init engine
 		if (s_singleton == nullptr)
 			s_singleton = this;
-
-		openGLVersion = std::string((char*)glGetString(GL_VERSION));
+		
+		const GLubyte* glVersionPointer = glGetString(GL_VERSION);
+		openGLVersion = std::string((const char*)glVersionPointer);
 
 #if defined(_DEBUG)
 		// Set up debug message callback

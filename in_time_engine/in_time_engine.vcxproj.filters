@@ -189,6 +189,9 @@
     <ClCompile Include="..\dependencies\imgui\imgui\backends\imgui_impl_opengl3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UserComponentSerializer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_engine\object\GLCircle.h">
@@ -435,6 +438,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="utility\Range.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserComponentSerializer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
