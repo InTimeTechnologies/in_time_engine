@@ -35,12 +35,10 @@
 // Dependencies | glfw_engine
 #include "GLFWInput.h"
 
-#if defined(IMGUI)
 // Dependencies | imgui
 #include <imgui/imgui.h>
 #include <imgui/backends/imgui_impl_glfw.h>
 #include <imgui/backends/imgui_impl_opengl3.h>
-#endif
 
 namespace glfw {
 	class Window {
@@ -79,10 +77,8 @@ namespace glfw {
 
 		public:
 			// Properties
-#if defined(IMGUI)
 			ImGuiContext* imGuiContext{ nullptr };
-#endif
-			// Properties
+
 			glfw::Input input;
 			std::function<void(GLFWwindow* window, int key, int scancode, int action, int mods)> keyCallback;
 			std::function<void(GLFWwindow* window, unsigned int codepoint)> charCallback;

@@ -276,7 +276,8 @@ namespace it {
 				bool isAwake = b2Body_IsAwake(bodyId);
 				bool isBullet = b2Body_IsBullet(bodyId);
 				bool isEnabled = b2Body_IsEnabled(bodyId);
-				bool isFixedRotation = b2Body_IsFixedRotation(bodyId);
+				//TODO: Is b2Body_IsFixedRotation truly not available in box2d.h
+				//bool isFixedRotation = b2Body_IsFixedRotation(bodyId);
 				bool isSleepEnabled = b2Body_IsSleepEnabled(bodyId);
 				bool isValid = b2Body_IsValid(bodyId);
 				b2Transform transform2D = b2Body_GetTransform(bodyId);
@@ -311,8 +312,9 @@ namespace it {
 				if (ImGui::Checkbox("Is Bullet", &isBullet))
 					b2Body_SetBullet(bodyId, isBullet);
 
-				if (ImGui::Checkbox("Fixed Rotation", &isFixedRotation))
-					b2Body_SetFixedRotation(bodyId, isFixedRotation);
+				//TODO: Is b2Body_SetFixedRotation truly not available in box2d.h
+				//if (ImGui::Checkbox("Fixed Rotation", &isFixedRotation))
+				//	b2Body_SetFixedRotation(bodyId, isFixedRotation);
 
 				if (ImGui::Checkbox("Awake", &isAwake))
 					b2Body_SetAwake(bodyId, isAwake);

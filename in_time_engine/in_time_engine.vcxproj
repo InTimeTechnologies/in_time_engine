@@ -53,6 +53,8 @@
     <Import Project="..\property_sheets\glew\glew_properties_solution_build.props" />
     <Import Project="..\property_sheets\glew\glew_properties_include.props" />
     <Import Project="..\property_sheets\glew\glew_properties_debug_lib.props" />
+    <Import Project="..\property_sheets\json\json_properties_include.props" />
+    <Import Project="..\property_sheets\termcolor\termcolor_properties_include.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -69,6 +71,8 @@
     <Import Project="..\property_sheets\stb\stb_properties_define_write.props" />
     <Import Project="..\property_sheets\glew\glew_properties_include.props" />
     <Import Project="..\property_sheets\glew\glew_properties_release_lib.props" />
+    <Import Project="..\property_sheets\json\json_properties_include.props" />
+    <Import Project="..\property_sheets\termcolor\termcolor_properties_include.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

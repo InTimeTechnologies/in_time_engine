@@ -183,6 +183,12 @@
     <ClCompile Include="in_time_engine\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="utility\IdFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utility\Number.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_engine\object\GLCircle.h">
@@ -417,6 +423,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="in_time_engine\VirtualResource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\BinaryRangeTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\IdFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\Number.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utility\Range.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

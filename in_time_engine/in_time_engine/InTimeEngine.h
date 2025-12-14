@@ -58,19 +58,10 @@
 #include "physics_engine_2d/PhysicsEngine2D.h"
 
 // Dependencies | glfw_engine
-#if defined(GLFW_ENGINE)
 #include <glfw_engine/GLFWEngine.h>
-#endif
-
-// Dependencies | vulkan_engine
-#if defined(VULKAN_ENGINE)
-#include <vulkan_engine/VulkanEngine.h>
-#endif
 
 // Dependencies | opengl_engine
-#if defined(OPENGL_ENGINE)
 #include <gl_engine/GLEngine.h>
-#endif
 
 // Namespace
 namespace it {
