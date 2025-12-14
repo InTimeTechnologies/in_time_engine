@@ -13,6 +13,3 @@
 [submodule "dependencies/stb/stb"]
 	path = dependencies/stb/stb
 	url = https://github.com/nothings/stb.git
-[submodule "dependencies/json/include"]
-	path = dependencies/json/include
-	url = https://github.com/nlohmann/json.git
