@@ -19,3 +19,6 @@
 [submodule "depencies/termcolor"]
 	path = depencies/termcolor
 	url = https://github.com/ikalnytskyi/termcolor.git
+[submodule "dependencies/termcolor"]
+	path = dependencies/termcolor
+	url = https://github.com/ikalnytskyi/termcolor.git
