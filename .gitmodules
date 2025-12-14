@@ -10,6 +10,7 @@
 [submodule "dependencies/imgui/imgui"]
 	path = dependencies/imgui/imgui
 	url = https://github.com/ocornut/imgui.git
+	branch = docking
 [submodule "dependencies/stb/stb"]
 	path = dependencies/stb/stb
 	url = https://github.com/nothings/stb.git
