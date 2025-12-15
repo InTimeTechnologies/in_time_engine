@@ -38,38 +38,28 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\property_sheets\glm\glm_properties_experimental.props" />
-    <Import Project="..\property_sheets\glm\glm_properties_include.props" />
-    <Import Project="..\property_sheets\glfw\glfw_properties_include_and_lib.props" />
-    <Import Project="..\property_sheets\box2d\box2d_properties_include_and_lib_dir.props" />
-    <Import Project="..\property_sheets\box2d\box2d_properties_debug_lib.props" />
-    <Import Project="..\property_sheets\imgui\imgui_properties_include.props" />
-    <Import Project="..\property_sheets\stb\stb_properties_include.props" />
-    <Import Project="..\property_sheets\stb\stb_properties_define_image.props" />
-    <Import Project="..\property_sheets\stb\stb_properties_define_write.props" />
-    <Import Project="..\property_sheets\opengl\opengl_properties_opengl32_lib.props" />
-    <Import Project="..\property_sheets\glew\glew_properties_include.props" />
-    <Import Project="..\property_sheets\glew\glew_properties_debug_lib.props" />
-    <Import Project="..\property_sheets\json\json_properties_include.props" />
+    <Import Project="..\property_sheets\glm\glm_properties.props" />
+    <Import Project="..\property_sheets\box2d\box2d_properties_debug.props" />
+    <Import Project="..\property_sheets\glfw\glfw_properties.props" />
+    <Import Project="..\property_sheets\imgui\imgui_properties.props" />
+    <Import Project="..\property_sheets\opengl\opengl_properties.props" />
+    <Import Project="..\property_sheets\glew\glew_properties_debug.props" />
+    <Import Project="..\property_sheets\stb\stb_properties.props" />
     <Import Project="..\property_sheets\termcolor\termcolor_properties_include.props" />
-    <Import Project="..\property_sheets\build_dependencies_properties.props" />
+    <Import Project="..\property_sheets\json\json_properties.props" />
     <Import Project="..\property_sheets\build\build_properties_build_dependencies.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\property_sheets\glm\glm_properties_experimental.props" />
-    <Import Project="..\property_sheets\glm\glm_properties_include.props" />
-    <Import Project="..\property_sheets\glfw\glfw_properties_include_and_lib.props" />
-    <Import Project="..\property_sheets\box2d\box2d_properties_include_and_lib_dir.props" />
-    <Import Project="..\property_sheets\box2d\box2d_properties_release_lib.props" />
-    <Import Project="..\property_sheets\imgui\imgui_properties_include.props" />
-    <Import Project="..\property_sheets\stb\stb_properties_include.props" />
-    <Import Project="..\property_sheets\stb\stb_properties_define_image.props" />
-    <Import Project="..\property_sheets\stb\stb_properties_define_write.props" />
-    <Import Project="..\property_sheets\glew\glew_properties_include.props" />
-    <Import Project="..\property_sheets\glew\glew_properties_release_lib.props" />
-    <Import Project="..\property_sheets\json\json_properties_include.props" />
+    <Import Project="..\property_sheets\glm\glm_properties.props" />
+    <Import Project="..\property_sheets\box2d\box2d_properties_release.props" />
+    <Import Project="..\property_sheets\glfw\glfw_properties.props" />
+    <Import Project="..\property_sheets\imgui\imgui_properties.props" />
+    <Import Project="..\property_sheets\opengl\opengl_properties.props" />
+    <Import Project="..\property_sheets\glew\glew_properties_release.props" />
+    <Import Project="..\property_sheets\stb\stb_properties.props" />
     <Import Project="..\property_sheets\termcolor\termcolor_properties_include.props" />
+    <Import Project="..\property_sheets\json\json_properties.props" />
     <Import Project="..\property_sheets\build\build_properties_build_dependencies.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />

@@ -6,6 +6,7 @@
   <ItemDefinitionGroup>
     <PreBuildEvent>
       <Command>call "$(SolutionDir)vs_scripts\build_dependencies\build_dependencies.bat" "$(SolutionDir)" "$(Configuration)" "$(Platform)"</Command>
+      <Message>Building dependencies through build scripts in $(SolutionDir)vs_scripts\build_dependencies</Message>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup />
