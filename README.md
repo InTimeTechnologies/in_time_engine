@@ -21,7 +21,7 @@ In Time Engine is the work of a single developer (the author), but will be opene
 - Termcolor
 
 # Other Dependencies
-- GLEW (GitHub repo is broken / missing 3 .c files as of December 13, 2025. It id downloaded as a .zip and extracted through s batch script on build.)
+- GLEW (GitHub repo is broken / missing 3 .c files as of December 13, 2025. It is downloaded as a .zip and extracted through s batch script on build.)
 
 # Building
 ```
