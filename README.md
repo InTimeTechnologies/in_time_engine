@@ -1,3 +1,5 @@
+![logo_animated](/doc/images/in_time_engine_1000x1000.gif)
+
 # In Time Engine
 In Time Engine is a fully custom C/C++ 3D / 2D  game engine. It delivers ease of use, fast performance and full customizability. It is structured to follow a strict flow of events. You can interface to this events to build the applications and games you like through event and component classes.
 
