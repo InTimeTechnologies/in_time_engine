@@ -12,27 +12,27 @@ echo configuration:        "%CONFIGURATION%"
 echo platform:             "%PLATFORM%"
 if "%DEPENDENCY_DIR%"=="" (
     echo DEPENDENCY_DIR not passed to script (directory to glfw root^)
-    echo aborting glfw build
+    echo aborting build_glfw.bat
     exit /b 1
 )
 if "%CONFIGURATION%"=="" (
     echo CONFIGURATION not passed to script (Debug or Release^)
-    echo aborting glfw build
+    echo aborting build_glfw.bat
     exit /b 1
 )
 if "%PLATFORM%"=="" (
     echo PLATFORM not passed to script (x64^) (x32 not supported^)
-    echo aborting glfw build
+    echo aborting build_glfw.bat
     exit /b 1
 )
 
-REM check if glfw library has been built in the passed configuration
+REM check if glfw build stamp exist
 set "BUILD_STAMP_DIR=%~dp0build_stamps"
 set "BUILD_STAMP_PATH=%BUILD_STAMP_DIR%\glfw_%CONFIGURATION%_lib_built.stamp"
 echo BUILD_STAMP_DIR:   "%BUILD_STAMP_DIR%"
 echo BUILD_STAMP_PATH:  "%BUILD_STAMP_PATH%"
 if exist "%BUILD_STAMP_PATH%" (
-	echo aborting glfw build reason: detected build stamp at: %BUILD_STAMP_PATH%
+	echo skipping glfw build reason: detected build stamp: %BUILD_STAMP_PATH%
 	exit /b 0
 )
 if not exist "%BUILD_STAMP_DIR%" md "%BUILD_STAMP_DIR%"
@@ -43,6 +43,17 @@ set "INSTALL_DIR=%DEPENDENCY_DIR%\install\%CONFIGURATION%"
 echo build directory:   "%BUILD_DIR%"
 echo install directory: "%INSTALL_DIR%"
 
+REM assert CMakeLists.txt exists in DEPENDENCY_DIR
+set "CMAKE_LISTS=%DEPENDENCY_DIR%\CMakeLists.txt"
+echo CMAKE_LISTS:           "%CMAKE_LISTS%"
+if exist "%CMAKE_LISTS%" (
+    echo CMakeLists.txt found in: "%CMAKE_LISTS%"
+) else (
+    echo CMakeLists.txt not found in: "%CMAKE_LISTS%"
+    echo aborting build_box2d.bat
+    exit /b 1
+)
+
 REM cd into build directory
 if not exist "%BUILD_DIR%" mkdir "%BUILD_DIR%"
 cd "%BUILD_DIR%"
@@ -52,12 +63,14 @@ REM configure cmake
 cmake ../.. -G "Visual Studio 17 2022" -A %PLATFORM% -DGLFW_BUILD_EXAMPLES=OFF -DGLFW_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX="%INSTALL_DIR%"
 if ERRORLEVEL 1 (
     echo cmake failed to configure
+    echo aborting build_glfw.bat
     exit /b 1
 )
 REM cmake install include and lib files
 cmake --build . --config %CONFIGURATION% --target install -- /m
 if ERRORLEVEL 1 (
     echo cmake failed to install glfw
+    echo aborting build_glfw.bat
     exit /b 1
 )
 
