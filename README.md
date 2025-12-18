@@ -23,6 +23,15 @@ In Time Engine is the work of a single developer (the author), but will be opene
 # Other Dependencies
 - GLEW (GitHub repo is broken / missing 3 .c files as of December 13, 2025. It is downloaded as a .zip and extracted through s batch script on build.)
 
+# Building Submodules and Dependencies
+in_time_engine.vcxproj is configured through property_sheets\build_event_properties.props to call vs_scripts\build_dependencies.bat to build the dependencies using the specified configuration. It uses build stamps to avoid rebuilding dependencies.
+
+Alternatively, you can call vs_scripts\build_dependencies\build_all.bat without any arguments. It will build all Debug and Release versions of all dependencies. It will also skip rebuilding dependencies when you are building in_time_engine through build stamp files in vs_scripts\build_dependencies\build_stamps.
+
+Shall there be any issues, you can call vs_scripts\build_dependencies\clean_all.bat to remove build stamps and install folders for all depdencies.
+
+There are other individual scripts you can use. Refer to their respective documentation inside [vs_scripts\build_dependencies](vs_scripts\build_dependencies) directory on how to use them.
+
 # Building
 ```
 git clone https://github.com/InTimeTechnologies/in_time_engine.git
