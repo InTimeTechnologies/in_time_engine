@@ -1,3 +1,8 @@
+# Sample commands (all)
+```
+.\build_all.bat
+```
+
 # Sample commands (Debug | x64):
 ```
 .\build_dependencies.bat "D:\source\vs_repos\in_time_engine\" "Debug" "x64"
@@ -15,5 +20,6 @@
 ```
 
 # Notes:
+- build_all.bat works when launched through cmd or double clicked.
 - build_dependencies.bat requires the solution directory path to have a trailing '\'
 - In Time Engine x86 intentionally unsuported

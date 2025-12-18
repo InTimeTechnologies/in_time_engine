@@ -71,6 +71,17 @@ REM build glew using msbuild
 cd "%BUILD_DIR%"
 msbuild glew.sln /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0.22621.0
 if ERRORLEVEL 1 (
+    echo msbuild is not available globally. Searching in C drive.
+    set ERRORLEVEL=0
+    if not defined VSINSTALLDIR (
+    echo Initializing Visual Studio build environment...
+    call "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat"
+    msbuild glew.sln /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0.22621.0
+    if ERRORLEVEL 1 (
+        echo Failed to initialize Visual Studio build tools / environment. Failed to compile glew.
+        exit /b 1
+    )
+)
     echo msbuild failed to build glew
     exit /b 1
 )

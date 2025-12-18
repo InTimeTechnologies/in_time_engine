@@ -33,8 +33,38 @@ echo CONFIGURATION_RELEASE: %CONFIGURATION_RELEASE%
 echo PLATFORM:              %PLATFORM%
 
 call "%BOX2D_SCRIPT%" "%DEPENDENCY_DIR_BOX2D%" %CONFIGURATION_DEBUG% %PLATFORM%
+if ERRORLEVEL 1 (
+	echo Failed to build box2d Debug x64
+	echo terminating build_all.bat
+	exit /b 1
+)
 call "%BOX2D_SCRIPT%" "%DEPENDENCY_DIR_BOX2D%" %CONFIGURATION_RELEASE% %PLATFORM%
+if ERRORLEVEL 1 (
+	echo Failed to build box2d Release x64
+	echo terminating build_all.bat
+	exit /b 1
+)
 call "%GLFW_SCRIPT%" "%DEPENDENCY_DIR_GLFW%" %CONFIGURATION_DEBUG% %PLATFORM%
+if ERRORLEVEL 1 (
+	echo Failed to build glfw Debug x64
+	echo terminating build_all.bat
+	exit /b 1
+)
 call "%GLFW_SCRIPT%" "%DEPENDENCY_DIR_GLFW%" %CONFIGURATION_RELEASE% %PLATFORM%
+if ERRORLEVEL 1 (
+	echo Failed to build glfw Release x64
+	echo terminating build_all.bat
+	exit /b 1
+)
 call "%GLEW_SCRIPT%" "%DEPENDENCY_DIR_GLEW%" %CONFIGURATION_DEBUG% %PLATFORM%
+if ERRORLEVEL 1 (
+	echo Failed to build glew Debug x64
+	echo terminating build_all.bat
+	exit /b 1
+)
 call "%GLEW_SCRIPT%" "%DEPENDENCY_DIR_GLEW%" %CONFIGURATION_RELEASE% %PLATFORM%
+if ERRORLEVEL 1 (
+	echo Failed to build glew Release x64
+	echo terminating build_all.bat
+	exit /b 1
+)
