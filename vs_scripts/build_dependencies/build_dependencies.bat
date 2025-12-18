@@ -10,6 +10,21 @@ set "PLATFORM=%~3"
 echo solution directory:         "%SOLUTION_DIR%"
 echo configuration:              "%CONFIGURATION%"
 echo platform:                   "%PLATFORM%"
+if "%SOLUTION_DIR%"=="" (
+    echo SOLUTION_DIR not passed to script (<path_to_in_time_engine_solution_directory>\dependencies^)
+    echo aborting build
+    exit /b 1
+)
+if "%CONFIGURATION%"=="" (
+    echo CONFIGURATION not passed to script (Debug or Release^)
+    echo aborting build
+    exit /b 1
+)
+if "%PLATFORM%"=="" (
+    echo PLATFORM not passed to script (x64^) (x32 not supported^)
+    echo aborting build
+    exit /b 1
+)
 
 REM dependency directories
 set "DEPENDENCY_DIR=%SOLUTION_DIR%dependencies"
@@ -33,7 +48,19 @@ echo glew build script:          "%BUILD_GLEW_SCRIPT%"
 
 REM build submodules and dependencies
 call "%BUILD_BOX2D_SCRIPT%" "%DEPENDENCY_DIR_BOX2D%" "%CONFIGURATION%" "%PLATFORM%"
+if ERRORLEVEL 1 (
+    echo failed to build box2d
+    exit /b 1
+)
 call "%BUILD_GLFW_SCRIPT%" "%DEPENDENCY_DIR_GLFW%" "%CONFIGURATION%" "%PLATFORM%"
+if ERRORLEVEL 1 (
+    echo failed to build glfw
+    exit /b 1
+)
 call "%BUILD_GLEW_SCRIPT%" "%DEPENDENCY_DIR_GLEW%" "%CONFIGURATION%" "%PLATFORM%"
+if ERRORLEVEL 1 (
+    echo failed to build glew
+    exit /b 1
+)
 
 endlocal
