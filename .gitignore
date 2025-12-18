@@ -6,6 +6,9 @@
 # glew dependency files
 dependencies/glew/
 
+# .stamp files (used to flag that build files are already generated to speed up compilation)
+*.stamp
+
 # User-specific files
 *.rsuser
 *.suo
