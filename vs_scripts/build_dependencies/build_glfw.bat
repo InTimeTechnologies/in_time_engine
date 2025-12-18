@@ -30,7 +30,7 @@ REM check if glfw library has been built in the passed configuration
 set "BUILD_STAMP_DIR=%~dp0build_stamps"
 set "BUILD_STAMP_PATH=%BUILD_STAMP_DIR%\glfw_%CONFIGURATION%_lib_built.stamp"
 echo BUILD_STAMP_DIR:   "%BUILD_STAMP_DIR%"
-echo BUILD_STAMP_PATH: "%BUILD_STAMP_PATH%"
+echo BUILD_STAMP_PATH:  "%BUILD_STAMP_PATH%"
 if exist "%BUILD_STAMP_PATH%" (
 	echo aborting glfw build reason: detected build stamp at: %BUILD_STAMP_PATH%
 	exit /b 0
