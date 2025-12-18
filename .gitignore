@@ -5,6 +5,7 @@
 
 # glew dependency files
 dependencies/glew/
+vs_scripts/build_dependencies/build_stamps
 
 # User-specific files
 *.rsuser

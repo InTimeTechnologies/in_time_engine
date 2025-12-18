@@ -30,3 +30,8 @@ cd in_time_engine
 git submodule update --init --recursive
 ```
 Open in_time_engine.sln and build solution in Debug or Release, x64.
+
+# Funding
+```
+Dogecoin: DPgWXnMgy7EhwfixtLub1JzzjfmaDSm9Za
+```
