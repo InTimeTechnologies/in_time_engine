@@ -32,8 +32,5 @@ git submodule update --init --recursive
 Open in_time_engine.sln and build solution in Debug or Release, x64.
 
 # Funding
-![dogecoin_qr](funding/dogecoin_funding_qr.png)
-```
-Dogecoin: DPgWXnMgy7EhwfixtLub1JzzjfmaDSm9Za
-```
+There are multiple avenues you can support In Time Engine development. Refer to the [funding](funding) page for different options.
 
