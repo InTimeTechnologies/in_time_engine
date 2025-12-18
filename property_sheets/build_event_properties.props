@@ -5,7 +5,7 @@
   <PropertyGroup />
   <ItemDefinitionGroup>
     <PreBuildEvent>
-      <Command>call "$(SolutionDir)vs_scripts\build_dependencies\build_dependencies.bat" "$(SolutionDir)" "$(Configuration)" "$(Platform)"
+      <Command>call "$(SolutionDir)vs_scripts\build_dependencies\build.bat" "$(SolutionDir)" "$(Configuration)" "$(Platform)"
 call "$(SolutionDir)vs_scripts\opengl\copy_opengl_shaders.bat" "$(ProjectDir)shader_src" "$(SolutionDir)$(Platform)\$(Configuration)\shader_src"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
