@@ -78,5 +78,4 @@ if ERRORLEVEL 1 (
 REM create glew build stamp for passed configuration
 type nul > "%BUILD_STAMP_PATH%"
 
-pause
 endlocal

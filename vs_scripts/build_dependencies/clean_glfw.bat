@@ -4,14 +4,14 @@ setlocal
 echo running clean_glfw.bat
 
 REM arguments
-set "SOLUTION_DIR=%~1"
+set "DEPENDENCY_DIR=%~1"
 set "CONFIGURATION=%~2"
 set "PLATFORM=%~3"
-echo solution directory: "%SOLUTION_DIR%"
-echo configuration:       "%CONFIGURATION%"
-echo platform:            "%PLATFORM%"
-if "%SOLUTION_DIR%"=="" (
-    echo SOLUTION_DIR not passed to script (directory to glfw root^)
+echo solution directory:   "%DEPENDENCY_DIR%"
+echo configuration:        "%CONFIGURATION%"
+echo platform:             "%PLATFORM%"
+if "%DEPENDENCY_DIR%"=="" (
+    echo DEPENDENCY_DIR not passed to script (directory to glfw root^)
     echo aborting clean
     exit /b 1
 )
@@ -30,12 +30,14 @@ REM directories
 set "BUILD_DIR=%DEPENDENCY_DIR%\build\%CONFIGURATION%"
 set "INSTALL_DIR=%DEPENDENCY_DIR%\install\%CONFIGURATION%"
 set "BUILD_STAMP=%~dp0build_stamps\glfw_%CONFIGURATION%_lib_built.stamp"
-echo build directory:   "%BUILD_DIR%"
-echo install directory: "%INSTALL_DIR%"
-echo build stamp:       "%BUILD_STAMP%"
+echo BUILD_DIR:            "%BUILD_DIR%"
+echo INSTALL_DIR:          "%INSTALL_DIR%"
+echo BUILD_STAMP:          "%BUILD_STAMP%"
 
 REM delete configuration build and install directories and build stamp
-echo cleaning directories and build stamp
+echo cleaning BUILD_DIR:   "%BUILD_DIR%"
 if exist "%BUILD_DIR%" rmdir /s /q "%BUILD_DIR%"
+echo cleaning INSTALL_DIR: "%INSTALL_DIR%"
 if exist "%INSTALL_DIR%" rmdir /s /q "%INSTALL_DIR%"
+echo deleting BUILD_STAMP: "%BUILD_STAMP%" 
 if exist "%BUILD_STAMP%" del /f /q "%BUILD_STAMP%"

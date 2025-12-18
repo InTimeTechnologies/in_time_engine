@@ -38,9 +38,9 @@ echo glfw dependency directory:  "%DEPENDENCY_DIR_GLEW%"
 
 REM dependency build scripts
 set "SCRIPT_DIR=%~dp0"
-set "BUILD_BOX2D_SCRIPT=%SCRIPT_DIR%build_box2d_dependency.bat"
-set "BUILD_GLFW_SCRIPT=%SCRIPT_DIR%build_glfw_dependency.bat"
-set "BUILD_GLEW_SCRIPT=%SCRIPT_DIR%build_glew_dependency.bat"
+set "BUILD_BOX2D_SCRIPT=%SCRIPT_DIR%build_box2d.bat"
+set "BUILD_GLFW_SCRIPT=%SCRIPT_DIR%build_glfw.bat"
+set "BUILD_GLEW_SCRIPT=%SCRIPT_DIR%build_glew.bat"
 echo script directory:           "%SCRIPT_DIR%"
 echo box2d build script:         "%BUILD_BOX2D_SCRIPT%"
 echo glfw build script:          "%BUILD_GLFW_SCRIPT%"

@@ -4,14 +4,14 @@ setlocal
 echo running clean_glew.bat
 
 REM arguments
-set "SOLUTION_DIR=%~1"
+set "DEPENDENCY_DIR=%~1"
 set "CONFIGURATION=%~2"
 set "PLATFORM=%~3"
-echo solution directory: "%SOLUTION_DIR%"
-echo configuration:       "%CONFIGURATION%"
-echo platform:            "%PLATFORM%"
-if "%SOLUTION_DIR%"=="" (
-    echo SOLUTION_DIR not passed to script (directory to glfw root^)
+echo solution directory:              "%DEPENDENCY_DIR%"
+echo configuration:                   "%CONFIGURATION%"
+echo platform:                        "%PLATFORM%"
+if "%DEPENDENCY_DIR%"=="" (
+    echo DEPENDENCY_DIR not passed to script (directory to glfw root^)
     echo aborting clean
     exit /b 1
 )
@@ -27,15 +27,32 @@ if "%PLATFORM%"=="" (
 )
 
 REM directories
-set "BUILD_DIR=%DEPENDENCY_DIR%\build\vc15"
-set "INSTALL_DIR=%DEPENDENCY_DIR%\lib\%CONFIGURATION"
+set "BUILD_DIR=%DEPENDENCY_DIR%\build\vc15\tmp"
+set "INSTALL_DIR=%DEPENDENCY_DIR%\lib\%CONFIGURATION%"
 set "BUILD_STAMP=%~dp0build_stamps\glew_%CONFIGURATION%_lib_built.stamp"
-echo build directory:   "%BUILD_DIR%"
-echo install directory: "%INSTALL_DIR%"
-echo build stamp:       "%BUILD_STAMP%"
+echo BUILD_DIR:                       "%BUILD_DIR%"
+echo INSTALL_DIR:                     "%INSTALL_DIR%"
+echo BUILD_STAMP:                     "%BUILD_STAMP%"
+
+set "GLEW_SHARED_BUILD=%BUILD_DIR%\glew_shared\%CONFIGURATION%\%PLATFORM%"
+set "GLEW_STATIC_BUILD=%BUILD_DIR%\glew_static\%CONFIGURATION%\%PLATFORM%"
+set "GLEW_INFO_BUILD=%BUILD_DIR%\glewinfo\%CONFIGURATION%\%PLATFORM%"
+set "GLEW_VISUAL_INFO_BUILD=%BUILD_DIR%\visualinfo\%CONFIGURATION%\%PLATFORM%"
+echo GLEW_SHARED_BUILD:               "%GLEW_SHARED_BUILD%"
+echo GLEW_STATIC_BUILD:               "%GLEW_STATIC_BUILD%"
+echo GLEW_INFO_BUILD:                 "%GLEW_INFO_BUILD%"
+echo GLEW_VISUAL_INFO_BUILD:          "%GLEW_VISUAL_INFO_BUILD%"
 
 REM delete configuration build and install directories and build stamp
-echo cleaning directories and build stamp
-if exist "%BUILD_DIR%" rmdir /s /q "%BUILD_DIR%"
+echo cleaning GLEW_SHARED_BUILD:      "%GLEW_SHARED_BUILD%"
+if exist "%GLEW_SHARED_BUILD%" rmdir /s /q "%GLEW_SHARED_BUILD%"
+echo cleaning GLEW_STATIC_BUILD:      "%GLEW_STATIC_BUILD%"
+if exist "%GLEW_STATIC_BUILD%" rmdir /s /q "%GLEW_STATIC_BUILD%"
+echo cleaning GLEW_INFO_BUILD:        "%GLEW_INFO_BUILD%"
+if exist "%GLEW_INFO_BUILD%" rmdir /s /q "%GLEW_INFO_BUILD%"
+echo cleaning GLEW_VISUAL_INFO_BUILD: "%GLEW_VISUAL_INFO_BUILD%"
+if exist "%GLEW_VISUAL_INFO_BUILD%" rmdir /s /q "%GLEW_VISUAL_INFO_BUILD%"
+echo cleaning INSTALL_DIR:            "%INSTALL_DIR%"
 if exist "%INSTALL_DIR%" rmdir /s /q "%INSTALL_DIR%"
+echo deleting BUILD_STAMP:            "%BUILD_STAMP%"
 if exist "%BUILD_STAMP%" del /f /q "%BUILD_STAMP%"
