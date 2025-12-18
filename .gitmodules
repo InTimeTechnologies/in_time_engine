@@ -20,3 +20,6 @@
 [submodule "dependencies/termcolor"]
 	path = dependencies/termcolor
 	url = https://github.com/ikalnytskyi/termcolor.git
+[submodule "dependencies/box2d"]
+	path = dependencies/box2d
+	url = https://github.com/erincatto/box2d.git
