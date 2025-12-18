@@ -30,7 +30,7 @@ Alternatively, you can call vs_scripts\build_dependencies\build_all.bat without 
 
 Shall there be any issues, you can call vs_scripts\build_dependencies\clean_all.bat to remove build stamps and install folders for all depdencies.
 
-There are other individual scripts you can use. Refer to their respective documentation inside [vs_scripts\build_dependencies](vs_scripts\build_dependencies) directory on how to use them.
+There are other individual scripts you can use. Refer to their respective documentation inside [vs_scripts\build_dependencies](vs_scripts/build_dependencies) directory on how to use them.
 
 # Building
 ```
