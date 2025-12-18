@@ -4,9 +4,6 @@
 [submodule "dependencies/glfw"]
 	path = dependencies/glfw
 	url = https://github.com/glfw/glfw.git
-[submodule "dependencies/box2d"]
-	path = dependencies/box2d
-	url = https://github.com/erincatto/box2d.git
 [submodule "dependencies/imgui/imgui"]
 	path = dependencies/imgui/imgui
 	url = https://github.com/ocornut/imgui.git
