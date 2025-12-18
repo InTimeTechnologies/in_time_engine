@@ -5,8 +5,6 @@
 
 # glew dependency files
 dependencies/glew/
-vs_scripts/build_dependencies/build_stamps/*
-!vs_scripts/build_dependencies/build_stamps/.gitkeep
 
 # User-specific files
 *.rsuser
