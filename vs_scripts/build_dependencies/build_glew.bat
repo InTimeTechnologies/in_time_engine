@@ -27,11 +27,15 @@ if "%PLATFORM%"=="" (
 )
 
 REM check if glew library has been built in the passed configuration
-set "BUILD_STAMP_PATH=%~dp0build_stamps\glew_%CONFIGURATION%_lib_built.stamp"
-if exist "%BUILD_STAMP_PATH%" (
-	echo aborting glew build reason: detected build stamp at: %BUILD_STAMP_PATH%
+set "BUILD_STAMP_DIR=%~dp0build_stamps"
+set "BUILD_STAMP_PATH=%BUILD_STAMP_DIR%\glew_%CONFIGURATION%_lib_built.stamp"
+echo BUILD_STAMP_DIR:   "%BUILD_STAMP_DIR%"
+echo BUILD_STAMP_PATH: "%BUILD_STAMP_PATH%"
+if exist "%BUIL_STAMP_DIR%" (
+	echo aborting glew build reason: detected build stamp at: %BUIL_STAMP_DIR%
 	exit /b 0
 )
+if not exist "%BUILD_STAMP_DIR%" md "%BUILD_STAMP_DIR%"
 
 REM directories and files
 set "BUILD_DIR=%DEPENDENCY_DIR%\build\vc15"
@@ -69,20 +73,13 @@ if exist "%DEPENDENCY_DIR%" (
 
 REM build glew using msbuild
 cd "%BUILD_DIR%"
-msbuild glew.sln /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0.22621.0
-if ERRORLEVEL 1 (
-    echo msbuild is not available globally. Searching in C drive.
-    set ERRORLEVEL=0
-    if not defined VSINSTALLDIR (
+if not defined VSINSTALLDIR (
     echo Initializing Visual Studio build environment...
     call "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\Tools\VsDevCmd.bat"
-    msbuild glew.sln /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0.22621.0
-    if ERRORLEVEL 1 (
-        echo Failed to initialize Visual Studio build tools / environment. Failed to compile glew.
-        exit /b 1
-    )
 )
-    echo msbuild failed to build glew
+msbuild glew.sln /p:Configuration="%CONFIGURATION%" /p:Platform="%PLATFORM%" /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0.22621.0
+if ERRORLEVEL 1 (
+    echo Failed to initialize Visual Studio build tools / environment. Failed to compile glew.
     exit /b 1
 )
 
