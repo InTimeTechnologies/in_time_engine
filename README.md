@@ -1,15 +1,11 @@
 ![logo_animated](/doc/images/in_time_engine_400x400.gif)
 
 # In Time Engine
-In Time Engine is a fully custom C/C++ 3D / 2D  game engine. It delivers ease of use, fast performance and full customizability. It is structured to follow a strict flow of events. You can interface to this events to build the applications and games you like through event and component classes.
-
-In TimeEngine does not have a license to the public yet but might transition to MIT license in the future.
-
-This is the only place where you can get a copy of In Time Engine.
+In Time Engine is a fully custom C/C++ 3D / 2D  game engine. It delivers ease of use, fast performance and full customizability. It is structured to follow a strict flow of events. You can interface to this events to build the applications and games you like through event and component classes. Currently it uses MSVC as its build system, but will support Make in the future. Transitioning among operating systems should be simple since it does not uses operating system specific code... yet. OS level code will be used in the future, but will use conditional compilation then.
 
 Documentation will be released as the engine matures given some features rapidly change in early development In the meantime, documentation is provided through .text files with the word doc on them or through comments.
 
-In Time Engine is the work of a single developer (the author), but will be opened to the open source community for input, contributions, requests and collaboration.
+In Time Engine is the work of a single developer (the author), but will be opened to the open source community for input, contributions, requests and collaboration. An MIT license will be released when interest picks up by the internet audience.
 
 # Submodules
 - GLM
