@@ -2,12 +2,24 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup>
+    <CustomBuildAfterTargets />
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <PreBuildEvent>
-      <Command>call "$(SolutionDir)vs_scripts\build_dependencies\build.bat" "$(SolutionDir)" "$(Configuration)" "$(Platform)"
-call "$(SolutionDir)vs_scripts\opengl\copy_opengl_shaders.bat" "$(ProjectDir)shader_src" "$(SolutionDir)$(Platform)\$(Configuration)\shader_src"</Command>
+      <Command>call "$(SolutionDir)vs_scripts\vulkan\validate_vulkan_sdk_installed.bat"
+call "$(SolutionDir)vs_scripts\build_dependencies\build.bat" "$(SolutionDir)" "$(Configuration)" "$(Platform)"</Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>call "$(SolutionDir)vs_scripts\opengl\copy_opengl_shaders.bat" "$(ProjectDir)shader_src" "$(TargetDir)shader_src"
+call "$(SolutionDir)vs_scripts\vulkan\compile_shaders.bat" "$(ProjectDir)vulkan_shader_src" "$(ProjectDir)vulkan_shader_out"
+call "$(SolutionDir)vs_scripts\vulkan\copy_vulkan_shaders.bat" "$(ProjectDir)vulkan_shader_out" "$(TargetDir)vulkan_shader_out"</Command>
+    </PostBuildEvent>
+    <CustomBuildStep />
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup />
 </Project>

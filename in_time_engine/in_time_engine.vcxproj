@@ -48,6 +48,7 @@
     <Import Project="..\property_sheets\stb\stb_properties.props" />
     <Import Project="..\property_sheets\termcolor\termcolor_properties_include.props" />
     <Import Project="..\property_sheets\json\json_properties.props" />
+    <Import Project="..\property_sheets\vulkan\vulkan_properties.props" />
     <Import Project="..\property_sheets\build_event_properties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -62,6 +63,7 @@
     <Import Project="..\property_sheets\termcolor\termcolor_properties_include.props" />
     <Import Project="..\property_sheets\json\json_properties.props" />
     <Import Project="..\property_sheets\build\build_properties_build_dependencies.props" />
+    <Import Project="..\property_sheets\vulkan\vulkan_properties.props" />
     <Import Project="..\property_sheets\build_event_properties.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -251,6 +253,14 @@
     <ClInclude Include="utility\IdFactory.h" />
     <ClInclude Include="utility\Number.h" />
     <ClInclude Include="utility\Range.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="vulkan_shader_src\line\line.frag" />
+    <None Include="vulkan_shader_src\line\line.vert" />
+    <None Include="vulkan_shader_src\point\point.frag" />
+    <None Include="vulkan_shader_src\point\point.vert" />
+    <None Include="vulkan_shader_src\triangle\triangle.frag" />
+    <None Include="vulkan_shader_src\triangle\triangle.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

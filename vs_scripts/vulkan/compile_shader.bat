@@ -1,3 +1,6 @@
+REM TODO: Test this script (you have not done so)
+REM TODO: glslc does not create intermidiary paths. You need to add this functionality to this script, just like the one in compile_shaders.bat
+
 setlocal enabledelayedexpansion
 @echo off
 

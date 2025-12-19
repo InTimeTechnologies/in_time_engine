@@ -447,4 +447,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="vulkan_shader_src\line\line.frag" />
+    <None Include="vulkan_shader_src\line\line.vert" />
+    <None Include="vulkan_shader_src\point\point.frag" />
+    <None Include="vulkan_shader_src\point\point.vert" />
+    <None Include="vulkan_shader_src\triangle\triangle.vert" />
+    <None Include="vulkan_shader_src\triangle\triangle.frag" />
+  </ItemGroup>
 </Project>

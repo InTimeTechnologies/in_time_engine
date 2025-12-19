@@ -17,7 +17,8 @@ In Time Engine is the work of a single developer (the author), but will be opene
 - Termcolor
 
 # Other Dependencies
-- GLEW (GitHub repo is broken / missing 3 .c files as of December 13, 2025. It is downloaded as a .zip and extracted through s batch script on build.)
+- GLEW (deprecated: migrating to Vulkan) (GitHub repo is broken / missing 3 .c files as of December 13, 2025. It is downloaded as a .zip and extracted through s batch script on build.)
+- Vulkan SDK: install Vulkan SDK to the location of your preference. The project automatically finds it through the VULKAN_SDK environment variable.
 
 # Building Submodules and Dependencies
 in_time_engine.vcxproj is configured through property_sheets\build_event_properties.props to call vs_scripts\build_dependencies.bat to build the dependencies using the specified configuration. It uses build stamps to avoid rebuilding dependencies.
@@ -26,7 +27,15 @@ Alternatively, you can call vs_scripts\build_dependencies\build_all.bat without 
 
 Shall there be any issues, you can call vs_scripts\build_dependencies\clean_all.bat to remove build stamps and install folders for all depdencies.
 
+Vulkan SDK must be installed prior to building in_time_engine.vcxproj. Refer to the requirement sections for more details.
+
 There are other individual scripts you can use. Refer to their respective documentation inside [vs_scripts\build_dependencies](vs_scripts/build_dependencies) directory on how to use them.
+
+# Requirements
+- Visual Studio 2026 installed: available at [Visual Studio 2026](https://visualstudio.microsoft.com/downloads/)
+- Git installed:                available at [Git download](https://git-scm.com/install/)
+- CMake installed:              available at [CMake download](https://cmake.org/download/)
+- Vulkan SDK installed:         available at [Vulkan SDK](https://vulkan.lunarg.com/sdk/home)
 
 # Building
 ```
