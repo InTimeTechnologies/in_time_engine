@@ -48,3 +48,7 @@ Open in_time_engine.sln and build solution in Debug or Release, x64.
 # Funding
 There are multiple avenues you can support In Time Engine development. Refer to the [funding](funding) page for different options.
 
+# Engine Order of Events
+
+![order_of_events_transparent_background](/doc/order_of_events/order_of_events_transparent_background.gif)
+

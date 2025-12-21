@@ -167,6 +167,10 @@
     <ClCompile Include="UserComponentSerializer.cpp" />
     <ClCompile Include="utility\IdFactory.cpp" />
     <ClCompile Include="utility\Number.cpp" />
+    <ClCompile Include="vulkan_engine\Buffer.cpp" />
+    <ClCompile Include="vulkan_engine\ShaderModule.cpp" />
+    <ClCompile Include="vulkan_engine\ShaderPipeline.cpp" />
+    <ClCompile Include="vulkan_engine\VulkanEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glfw_engine\GLFWEngine.h" />
@@ -253,6 +257,10 @@
     <ClInclude Include="utility\IdFactory.h" />
     <ClInclude Include="utility\Number.h" />
     <ClInclude Include="utility\Range.h" />
+    <ClInclude Include="vulkan_engine\Buffer.h" />
+    <ClInclude Include="vulkan_engine\ShaderModule.h" />
+    <ClInclude Include="vulkan_engine\ShaderPipeline.h" />
+    <ClInclude Include="vulkan_engine\VulkanEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="vulkan_shader_src\line\line.frag" />
