@@ -50,5 +50,5 @@ There are multiple avenues you can support In Time Engine development. Refer to 
 
 # Engine Order of Events
 
-![order_of_events_transparent_background](/doc/order_of_events/order_of_events_transparent_background.gif)
+![order_of_events_transparent_background](/doc/order_of_events/order_of_events_transparent_background.svg)
 
