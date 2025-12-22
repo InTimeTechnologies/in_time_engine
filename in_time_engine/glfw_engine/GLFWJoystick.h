@@ -42,9 +42,9 @@ namespace glfw {
 		// Object
 
 		// Properties
-		bool connected = false;
-
 		JoystickCode code = JoystickCode::UNKOWN;
+
+		bool connected = false;
 
 		JoystickButton buttonA{ JoystickButtonCode::A, "A" };
 		JoystickButton buttonB{ JoystickButton(JoystickButtonCode::B, "B") };

@@ -42,12 +42,12 @@ namespace glfw {
 		// Object
 		private:
 			// Properties
-			std::forward_list<glfw::Key*> keysToReset = std::forward_list<glfw::Key*>();
+			std::forward_list<Key*> keysToReset = std::forward_list<Key*>();
 			std::forward_list<MouseButton*> mouseButtonsToReset = std::forward_list<MouseButton*>();
 
 		public:
 			// Properties
-			std::array<glfw::Key, 121> keys = std::array<glfw::Key, 121>();
+			std::array<Key, 121> keys = std::array<Key, 121>();
 			std::array<MouseButton, 8> mouseButtons = std::array<MouseButton, 8>();
 
 		public:
@@ -56,7 +56,7 @@ namespace glfw {
 			~Input() = default;
 
 			// Getters
-			glfw::Key getKey(KeyCode keyCode);
+			Key getKey(KeyCode keyCode);
 			int getKeyIndex(KeyCode keyCode);
 
 			MouseButton getMouseButton(MouseButtonCode mouseButtonCode);

@@ -204,6 +204,30 @@
     <ClCompile Include="vulkan_engine\VulkanEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="in_time_engine\input\mouse_keyboard\Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\input\mouse_keyboard\MouseButtonCode.h">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\input\mouse_keyboard\Key.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\input\mouse_keyboard\MouseButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\input\joystick\JoystickButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\input\joystick\Joystick.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\input\joystick\JoysticAxis.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\input\joystick\JoystickManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gl_engine\object\GLCircle.h">
@@ -468,6 +492,42 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vulkan_engine\VulkanEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\mouse_keyboard\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\mouse_keyboard\Key.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\mouse_keyboard\KeyCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\mouse_keyboard\MouseButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\KeyModifierCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\joystick\JoystickbuttonCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\joystick\JoystickButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\joystick\JoystickAxis.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\joystick\JoystickAxisCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\joystick\Joystick.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\joystick\JoystickCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\input\joystick\JoystickManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -25,6 +25,8 @@
 #include <string>
 #include <list>
 #include <functional>
+#include <vector>
+#include <utility>
 
 // Dependencies | glew
 #include <GL/glew.h>
@@ -48,6 +50,7 @@ namespace glfw {
 			static int s_defaultWidth;
 			static int s_defaultHeight;
 			static std::string s_defaultTitle;
+			static std::vector<std::pair<int, int>> s_defaultWindowHints;
 
 			// Callbacks
 			static void s_keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);

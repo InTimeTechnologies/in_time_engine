@@ -72,24 +72,6 @@ it::InTimeEngine::InTimeEngine() {
 	componentRegistry.add(typeid(GPUTriangle), 2006, "GPU Triangle", []() { return new GPUTriangle(); });
 	componentRegistry.add(typeid(GPUTriangleStrip), 2007, "GPU Triangle Strip", []() { return new GPUTriangleStrip(); });
 	componentRegistry.add(typeid(GPUTriangleFan), 2008, "GPU Triangle Fan", []() { return new GPUTriangleFan(); });
-
-	/* Every component in the registry by default:
-		EmptyComponent
-		Transformation
-		PhysicsTransformation
-
-
-
-		GPUTransform
-		Camera2D
-		Camera3D
-		GPUPoint
-		GPULine
-		GPUMultiLine
-		GPUTriangle
-		GPUTriangleStrip
-		GPUTriangleFan
-	*/
 }
 it::InTimeEngine::~InTimeEngine() {
 	gameObjectManager.destroyGameObjectsImmediately();
@@ -377,15 +359,7 @@ void it::InTimeEngine::preRender() {
 		iRender->onPreRender();
 }
 void it::InTimeEngine::render() {
-	#if defined(VULKAN_ENGINE)
-
-	#if defined(DEAR_IMGUI)
-	// Setup ImGui for next frame
-	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplGlfw_NewFrame();
-	ImGui::NewFrame();
-	#endif
-
+#if defined(VULKAN)
 	Vulkan::VulkanEngine* vulkanEngine = Vulkan::VulkanEngine::s_getSingleton();
 	if (vulkanEngine != nullptr) {
 		vulkanEngine->render();
@@ -394,15 +368,9 @@ void it::InTimeEngine::render() {
 	// Render UI
 	for (RenderUIEvent* iRenderUI : RenderUIEvent::s_renderUIList)
 		iRenderUI->render();
+#endif
 
-	#if defined(DEAR_IMGUI)
-	// Render Dear ImGUI UI
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-	#endif
-
-	#endif
-
+#if defined(OPENGL)
 	gl::Engine* glEngine = gl::Engine::s_getSingleton();
 	if (glEngine == nullptr)
 		return;
@@ -416,6 +384,7 @@ void it::InTimeEngine::render() {
 	GPUTransform::s_synch();
 	glEngine->render();
 	glEngine->swapBuffers();
+#endif
 }
 void it::InTimeEngine::postRender() {
 	for (RenderEvent* iRender : RenderEvent::s_renderList)

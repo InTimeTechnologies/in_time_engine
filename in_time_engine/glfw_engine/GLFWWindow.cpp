@@ -34,6 +34,20 @@ namespace glfw {
 	int Window::s_defaultWidth = 800;
 	int Window::s_defaultHeight = 600;
 	std::string Window::s_defaultTitle = "GLFW Window";
+#if defined(OPENGL)
+	std::vector<std::pair<int, int>> Window::s_defaultWindowHints{
+		{ GLFW_CONTEXT_VERSION_MAJOR, 4 },
+		{ GLFW_CONTEXT_VERSION_MINOR, 6 },
+		{ GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE },
+		{ GLFW_SAMPLES, 4 }
+	};
+#elif defined (VULKAN)
+	std::vector<std::pair<int, int>> Window::s_defaultWindowHints{
+		{ GLFW_SLIENT_API, GLFW_NO_API }
+	};
+#else
+	std::vector<std::pair<int, int>> Window::s_defaultWindowHints{};
+#endif
 
 	// Callbacks
 	void Window::s_keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -231,11 +245,16 @@ namespace glfw {
 			return;
 
 		// Set window hints prior to creation (remove this in production. This needs to be set outside of this class)	
-		glfwWindowHint(GLFW_MAXIMIZED, true);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-		glfwWindowHint(GLFW_SAMPLES, 4);
+		// glfwWindowHint(GLFW_MAXIMIZED, true);
+		// glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+		// glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+		// glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+		// glfwWindowHint(GLFW_SAMPLES, 4);
+		for (size_t i = 0; i < s_defaultWindowHints.size(); i++) {
+			int hint = s_defaultWindowHints[i].first;
+			int value = s_defaultWindowHints[i].second;
+			glfwWindowHint(hint, value);
+		}
 
 		// Create window
 		window = glfwCreateWindow(width, height, title.c_str(), monitor, share);
