@@ -53,15 +53,17 @@
 #include "EngineState.h"
 #include "Resource.h"
 #include "ResourceManager.h"
+#include "IPlatformBackend.h"
+
+// Dependencies | window
+#include "window/WindowManager.h"
+
+// Dependencies | input
+#include "input/mouse_keyboard/MouseKeyboardInput.h"
+#include "input/joystick/JoystickInput.h"
 
 // Dependencies | box2d_engine
 #include "physics_engine_2d/PhysicsEngine2D.h"
-
-// Dependencies | glfw_engine
-#include <glfw_engine/GLFWEngine.h>
-
-// Dependencies | opengl_engine
-#include <gl_engine/GLEngine.h>
 
 // Namespace
 namespace it {
@@ -91,8 +93,6 @@ namespace it {
 		public:
 			// Inner engines
 			PhysicsEngineB2D physicsEngine2D;
-			glfw::Engine glfwEngine{ true };
-			gl::Engine glEngine{};
 
 			// Properties
 			RealTime realTime{};
@@ -103,6 +103,9 @@ namespace it {
 			ComponentRegistry componentRegistry{};
 			SceneManager sceneManager{};
 
+			MouseKeyboardInput mouseKeyboardInput{};
+			JoystickInput joystickInput{};
+
 			// Callbacks
 			std::function<bool()> onPauseCallback{ std::function<bool()>() };
 			std::function<bool()> onStopCallback{ std::function<bool()>() };
@@ -110,6 +113,12 @@ namespace it {
 			// Flags
 			bool destroyGameObjectsOnStop{ false };
 			bool destroyGameObjectsOnDelete{ true };
+
+			// Properties | window
+			WindowManager windowManager{};
+
+			// Properties | backends
+			IPlatformBackend* inputEventBackend{ nullptr };
 
 			// Constructor / Destructor
 			InTimeEngine();
@@ -129,9 +138,6 @@ namespace it {
 		private:
 			// Functions
 			void initializeLogics();
-
-			void resetInput();
-			void processInput();
 
 			void prePhysicsUpdate();
 			void updatePhysics(float timeStep);
@@ -155,13 +161,7 @@ namespace it {
 #include "component/PhysicsTransformation.h"
 
 // Dependencies | in_time_engine | object
-#include "object/KeyControl.h"
 #include "object/Stopwatch.h"
 #include "object/Timer.h"
-#include "object/CameraControl2D.h"
 #include "object/FrameCounter.h"
-
-// Dependencies | in_time_engine | graphics_component
-#include "gpu_component/GPUTransform.h"
-#include "gpu_component/Camera2D.h"
-#include "gpu_component/GPUComponents.h"
+#include "object/KeyPressPrinter.h"

@@ -166,45 +166,5 @@ namespace it {
 
 			return true;
 		}
-		else if (typeInfo == typeid(GPULine)) {
-			GPULine* gpuLine = reinterpret_cast<GPULine*>(component);
-
-			json = nlohmann::ordered_json::object();
-			json["position"] = gpuLine->line.gpuData->position;
-			json["offset"] = gpuLine->line.gpuData->offset;
-			json["color"] = gpuLine->line.gpuData->color;
-			json["width"] = gpuLine->line.width;
-
-			return true;
-		}
-		else if (typeInfo == typeid(GPUMultiLine)) {
-			GPUMultiLine* gpuMultiline = reinterpret_cast<GPUMultiLine*>(component);
-
-			json = nlohmann::ordered_json::object();
-			json["gpuData"] = nlohmann::ordered_json::array();
-			for (size_t i = 0; gpuMultiline->multiLine.gpuData.size(); i++) {
-				nlohmann::ordered_json vertexJson = nlohmann::ordered_json::object();
-				vertexJson["position"] = gpuMultiline->multiLine.gpuData[i].position;
-				vertexJson["offset"] = gpuMultiline->multiLine.gpuData[i].offset;
-				vertexJson["color"] = gpuMultiline->multiLine.gpuData[i].color;
-				json["gpuData"].push_back(vertexJson);
-			}
-			json["width"] = gpuMultiline->multiLine.width;
-			json["loop"] = gpuMultiline->multiLine.loop;
-
-			return true;
-		}
-		else if (typeInfo == typeid(GPUTriangle)) {
-			GPUTriangle* gpuTriangle = reinterpret_cast<GPUTriangle*>(component);
-
-			nlohmann::ordered_json json = nlohmann::ordered_json::object();
-			json["gpuData"] = nlohmann::ordered_json::array();
-			for (size_t i = 0; i < 3; i++) {
-				nlohmann::ordered_json vertex = nlohmann::ordered_json::object();
-				vertex["position"] = gpuTriangle->triangle.gpuData[i].position;
-				vertex["color"] = gpuTriangle->triangle.gpuData[i].color;
-				json["gpuData"].push_back(vertex);
-			}
-		}
 	}
 }

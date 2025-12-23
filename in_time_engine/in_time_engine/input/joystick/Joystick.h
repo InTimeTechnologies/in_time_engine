@@ -45,6 +45,7 @@ namespace it {
 		JoystickAxis axisRightTrigger{ JoystickAxis(JoystickAxisCode::RIGHT_TRIGGER, 0.0f, "right trigger") };
 
 		// Functions
+		void feedAction(bool connected);
 		void feedAction(JoystickButtonCode joystickButtonCode, JoystickButton::Action action);
 		void feedAction(JoystickAxisCode joystickAxisCode, float value);
 		void reset();

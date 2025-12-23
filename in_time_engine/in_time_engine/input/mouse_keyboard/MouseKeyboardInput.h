@@ -9,7 +9,7 @@
 #include "MouseButton.h"
 
 namespace it {
-	class Input {
+	class MouseKeyboardInput {
 		// Object
 		private:
 			// Properties
@@ -20,14 +20,14 @@ namespace it {
 
 		public:
 			// Constructor / Destructor
-			Input();
-			Input(const Input& other) = default;
-			Input(Input&& other) noexcept = default;
-			~Input() = default;
+			MouseKeyboardInput();
+			MouseKeyboardInput(const MouseKeyboardInput& other) = default;
+			MouseKeyboardInput(MouseKeyboardInput&& other) noexcept = default;
+			~MouseKeyboardInput() = default;
 
 			// Operators | assignment
-			Input& operator=(const Input& other) = default;
-			Input& operator=(Input&& other) noexcept = default;
+			MouseKeyboardInput& operator=(const MouseKeyboardInput& other) = default;
+			MouseKeyboardInput& operator=(MouseKeyboardInput&& other) noexcept = default;
 
 			// Getters
 			const std::forward_list<Key*>& getKeysToReset() const;

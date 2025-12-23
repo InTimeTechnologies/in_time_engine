@@ -18,99 +18,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="gl_engine\object\Circle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\object\GLLine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\object\GLMultiLine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\object\GLRenderableSprite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\object\GLTriangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\object\GLTriangleFan.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\object\GLTriangleStrip.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLCamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLCamera2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLCamera3D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLDebug.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLPointRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLProgram.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLShader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLTexture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gl_engine\GLTransform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="glfw_engine\GLFWEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="glfw_engine\GLFWInput.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="glfw_engine\GLFWJoysticManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="glfw_engine\GLFWWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="glfw_engine\GLFWWindowManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="in_time_editor\ComponentAdderPopupUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="in_time_editor\EngineTimeUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="in_time_editor\GameObjectUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="in_time_editor\HierarchyUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="in_time_editor\InspectorUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="in_time_editor\InTimeEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="in_time_engine\gpu_component\Camera2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="in_time_engine\gpu_component\GPUTransform.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="in_time_engine\object\Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -204,7 +111,7 @@
     <ClCompile Include="vulkan_engine\VulkanEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="in_time_engine\input\mouse_keyboard\Input.cpp">
+    <ClCompile Include="in_time_engine\input\mouse_keyboard\MouseKeyboardInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="in_time_engine\input\mouse_keyboard\MouseButtonCode.h">
@@ -225,143 +132,20 @@
     <ClCompile Include="in_time_engine\input\joystick\JoysticAxis.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="in_time_engine\input\joystick\JoystickManager.cpp">
+    <ClCompile Include="in_time_engine\input\joystick\JoystickInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="backend\glfw\GLFWBackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="backend\glfw\GLFWWindowBackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\window\WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gl_engine\object\GLCircle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\object\GLLine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\object\GLMultiLine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\object\GLPoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\object\GLRenderableSprite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\object\GLTriangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\object\GLTriangleFan.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\object\GLTriangleStrip.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLCamera.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLCamera2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLCamera3D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLDataType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLDebug.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLHeader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLPointRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLPrimitive.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLProgram.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLShader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLTexture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLTime.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gl_engine\GLTransform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWInput.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWJoystick.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWJoystickAxis.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWJoystickAxisCode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWJoystickButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWJoystickButtonCode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWJoystickCode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWJoystickManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWKey.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWKeyCode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWMouseButton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWMouseButtonCode.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWWindow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="glfw_engine\GLFWWindowManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_editor\ComponentAdderPopupUI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_editor\EngineTimeUI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_editor\GameObjectUI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_editor\HierarchyUI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_editor\InspectorUI.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_editor\InTimeEditor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="in_time_engine\component\EmptyComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -369,18 +153,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="in_time_engine\component\Transformation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_engine\gpu_component\Camera2D.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_engine\gpu_component\GPUComponents.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_engine\gpu_component\GPUTransform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="in_time_engine\object\CameraControl2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="in_time_engine\object\FrameCounter.h">
@@ -494,7 +266,7 @@
     <ClInclude Include="vulkan_engine\VulkanEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="in_time_engine\input\mouse_keyboard\Input.h">
+    <ClInclude Include="in_time_engine\input\mouse_keyboard\MouseKeyboardInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="in_time_engine\input\mouse_keyboard\Key.h">
@@ -509,7 +281,7 @@
     <ClInclude Include="in_time_engine\KeyModifierCode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="in_time_engine\input\joystick\JoystickbuttonCode.h">
+    <ClInclude Include="in_time_engine\input\joystick\JoystickButtonCode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="in_time_engine\input\joystick\JoystickButton.h">
@@ -527,7 +299,22 @@
     <ClInclude Include="in_time_engine\input\joystick\JoystickCode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="in_time_engine\input\joystick\JoystickManager.h">
+    <ClInclude Include="in_time_engine\input\joystick\JoystickInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\glfw\GLFWBackend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\IPlatformBackend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\window\Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\window\WindowManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\object\KeyPressPrinter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

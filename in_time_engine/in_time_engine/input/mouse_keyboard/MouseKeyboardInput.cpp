@@ -1,12 +1,12 @@
-#include "Input.h"
+#include "MouseKeyboardInput.h"
 
 namespace it {
-	// class Input
+	// class MouseKeyboardInput
 
 	// Object | public
 
 	// Constructor / Destructor
-	Input::Input() {
+	MouseKeyboardInput::MouseKeyboardInput() {
 		size_t i = 0;
 		keys[i++] = Key{ KeyCode::UNKNOWN, false, false, false, false, "unknown" };
 		keys[i++] = Key{ KeyCode::SPACE, false, false, false, false, " " };
@@ -143,41 +143,41 @@ namespace it {
 	}
 
 	// Getters
-	const std::forward_list<Key*>& Input::getKeysToReset() const {
+	const std::forward_list<Key*>& MouseKeyboardInput::getKeysToReset() const {
 		return keysInTransientState;
 	}
-	const std::forward_list<MouseButton*>& Input::getMouseButtonsToReset() const {
+	const std::forward_list<MouseButton*>& MouseKeyboardInput::getMouseButtonsToReset() const {
 		return mouseButtonsInTransientState;
 	}
-	const std::array<Key, static_cast<size_t>(KeyCode::COUNT)>& Input::getKeys() const {
+	const std::array<Key, static_cast<size_t>(KeyCode::COUNT)>& MouseKeyboardInput::getKeys() const {
 		return keys;
 	}
-	const std::array<MouseButton, static_cast<size_t>(MouseButtonCode::COUNT)>& Input::getMouseButtons() const {
+	const std::array<MouseButton, static_cast<size_t>(MouseButtonCode::COUNT)>& MouseKeyboardInput::getMouseButtons() const {
 		return mouseButtons;
 	}
 
-	const Key& Input::getKey(KeyCode keyCode) const {
+	const Key& MouseKeyboardInput::getKey(KeyCode keyCode) const {
 		size_t i = getKeyIndex(keyCode);
 		return keys[i];
 	}
-	size_t Input::getKeyIndex(KeyCode keyCode) const {
+	size_t MouseKeyboardInput::getKeyIndex(KeyCode keyCode) const {
 		size_t i = static_cast<size_t>(keyCode);
 		size_t count = static_cast<size_t>(KeyCode::COUNT);
 		return i < count ? i : 0;
 	}
 
-	const MouseButton& Input::getMouseButton(MouseButtonCode mouseButtonCode) const {
+	const MouseButton& MouseKeyboardInput::getMouseButton(MouseButtonCode mouseButtonCode) const {
 		size_t i = getMouseButtonIndex(mouseButtonCode);
 		return mouseButtons[i];
 	}
-	size_t Input::getMouseButtonIndex(MouseButtonCode mouseButtonCode) const {
+	size_t MouseKeyboardInput::getMouseButtonIndex(MouseButtonCode mouseButtonCode) const {
 		size_t i = static_cast<size_t>(mouseButtonCode);
 		size_t count = static_cast<size_t>(MouseButtonCode::COUNT);
 		return i < count ? i : count;
 	}
 
 	// Functions
-	void Input::feedAction(KeyCode keyCode, Key::Action action) {
+	void MouseKeyboardInput::feedAction(KeyCode keyCode, Key::Action action) {
 		size_t i = getKeyIndex(keyCode);
 
 		if (!keys[i].inTransientState())
@@ -185,7 +185,7 @@ namespace it {
 
 		keys[i].feedAction(action);
 	}
-	void Input::feedAction(MouseButtonCode mouseButtonCode, MouseButton::Action action) {
+	void MouseKeyboardInput::feedAction(MouseButtonCode mouseButtonCode, MouseButton::Action action) {
 		size_t i = getMouseButtonIndex(mouseButtonCode);
 
 		if (!mouseButtons[i].inTransientState())
@@ -193,11 +193,11 @@ namespace it {
 
 		mouseButtons[i].feedAction(action);
 	}
-	void Input::reset() {
+	void MouseKeyboardInput::reset() {
 		for (size_t i = 0; i < keys.size(); i++)
 			keys[i].reset();
 	}
-	void Input::resetTransientStates() {
+	void MouseKeyboardInput::resetTransientStates() {
 		for (Key* key : keysInTransientState)
 			key->resetTransientState();
 		keysInTransientState.clear();
@@ -206,7 +206,7 @@ namespace it {
 			mouseButton->resetTransientState();
 		mouseButtonsInTransientState.clear();
 	}
-	void Input::resetAllTransientStates() {
+	void MouseKeyboardInput::resetAllTransientStates() {
 		for (size_t i = 0; i < keys.size(); i++)
 			keys[i].resetTransientState();
 		keysInTransientState.clear();

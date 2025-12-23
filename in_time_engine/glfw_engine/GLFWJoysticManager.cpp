@@ -1,7 +1,7 @@
 #include "GLFWJoystickManager.h"
 
 namespace glfw {
-	// struct JoystickManager
+	// struct JoystickInput
 
 	// Functions
 	void JoystickManager::reset() {

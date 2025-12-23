@@ -7,7 +7,7 @@
 #include "Joystick.h"
 
 namespace it {
-	class JoystickManager {
+	class JoystickInput {
 		// Object
 		private:
 			// Properties
@@ -38,6 +38,7 @@ namespace it {
 			const Joystick& getJoystick(JoystickCode joystickCode) const;
 			size_t getJoystickIndex(JoystickCode joystickCode) const;
 
+			void feedAction(JoystickCode joystickCode, bool connected);
 			void feedAction(JoystickCode joystickCode, JoystickButtonCode joystickButtoneCode, JoystickButton::Action action);
 			void feedAction(JoystickCode joystickCode, JoystickAxisCode joystickAxisCode, float value);
 			void reset();

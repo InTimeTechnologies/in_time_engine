@@ -1,6 +1,9 @@
 #include "Joystick.h"
 
 namespace it {
+	void Joystick::feedAction(bool connected) {
+		this->connected = connected;
+	}
 	void Joystick::feedAction(JoystickButtonCode joystickButtonCode, JoystickButton::Action action) {
 		switch (joystickButtonCode) {
 			case JoystickButtonCode::A:

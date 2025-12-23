@@ -62,16 +62,6 @@ it::InTimeEngine::InTimeEngine() {
 	componentRegistry.add(typeid(PhysicsTransformation), 3, "FixedTransformation", []() { return new PhysicsTransformation(); });
 
 	componentRegistry.add(typeid(RigidBodyB2D), 1000, "Ridig Body B2D", []() { return new RigidBodyB2D(); });
-
-	componentRegistry.add(typeid(GPUTransform), 2000, "GPU Transform", []() { return new GPUTransform(); });
-	componentRegistry.add(typeid(Camera2D), 2001, "Camera 2D", []() { return new Camera2D(); });
-	componentRegistry.add(typeid(Camera3D), 2002, "Camera 3D", []() { return new Camera3D(); });
-	componentRegistry.add(typeid(GPUPoint), 2003, "GPU Point", []() { return new GPUPoint(); });
-	componentRegistry.add(typeid(GPULine), 2004, "GPU Line", []() { return new GPULine(); });
-	componentRegistry.add(typeid(GPUMultiLine), 2005, "GPU Multiline", []() { return new GPUMultiLine(); });
-	componentRegistry.add(typeid(GPUTriangle), 2006, "GPU Triangle", []() { return new GPUTriangle(); });
-	componentRegistry.add(typeid(GPUTriangleStrip), 2007, "GPU Triangle Strip", []() { return new GPUTriangleStrip(); });
-	componentRegistry.add(typeid(GPUTriangleFan), 2008, "GPU Triangle Fan", []() { return new GPUTriangleFan(); });
 }
 it::InTimeEngine::~InTimeEngine() {
 	gameObjectManager.destroyGameObjectsImmediately();
@@ -142,8 +132,10 @@ void it::InTimeEngine::run() {
 			
 		// If core or physics requires update, update UI and input
 		if (coreShouldUpdate || physicsShouldUpdate) {
-			resetInput();
-			processInput();
+			if (inputEventBackend != nullptr)
+				inputEventBackend->update();
+			//resetInput();
+			//processInput();
 
 			// Init components (enable, disable, start)
 			initializeLogics();
@@ -205,8 +197,6 @@ void it::InTimeEngine::step() {
 
 	// If core or physics requires update, update UI and input
 	{
-		resetInput();
-		processInput();
 
 		// Init components (enable, disable, start)
 		initializeLogics();
@@ -274,13 +264,6 @@ void it::InTimeEngine::initializeLogics() {
 		iComponentInit->onInit();
 
 	InitializeEvent::s_initializeEventList.clear();
-}
-
-void it::InTimeEngine::resetInput() {
-	glfwEngine.resetInput();
-}
-void it::InTimeEngine::processInput() {
-	glfwEngine.processInput();
 }
 
 void it::InTimeEngine::preUpdate() {
@@ -368,22 +351,6 @@ void it::InTimeEngine::render() {
 	// Render UI
 	for (RenderUIEvent* iRenderUI : RenderUIEvent::s_renderUIList)
 		iRenderUI->render();
-#endif
-
-#if defined(OPENGL)
-	gl::Engine* glEngine = gl::Engine::s_getSingleton();
-	if (glEngine == nullptr)
-		return;
-
-	glEngine->time.time = this->coreTime.getTimeF();
-	glEngine->time.deltaTime = this->coreTime.getDeltaTimeF();
-	glEngine->time.scaledTime = this->coreTime.getScaledTimeF();
-	glEngine->time.scaledDeltaTime = this->coreTime.getScaledDeltaTimeF();
-
-	Camera2D::s_updateTransforms();
-	GPUTransform::s_synch();
-	glEngine->render();
-	glEngine->swapBuffers();
 #endif
 }
 void it::InTimeEngine::postRender() {

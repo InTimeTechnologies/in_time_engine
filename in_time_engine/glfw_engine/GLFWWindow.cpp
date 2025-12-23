@@ -43,7 +43,7 @@ namespace glfw {
 	};
 #elif defined (VULKAN)
 	std::vector<std::pair<int, int>> Window::s_defaultWindowHints{
-		{ GLFW_SLIENT_API, GLFW_NO_API }
+		{ GLFW_CLIENT_API, GLFW_NO_API }
 	};
 #else
 	std::vector<std::pair<int, int>> Window::s_defaultWindowHints{};
