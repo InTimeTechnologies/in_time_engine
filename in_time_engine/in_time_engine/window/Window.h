@@ -4,6 +4,11 @@
 #include <string>
 
 namespace it {
+	struct BackendObjectHandle {
+		// Getters
+		virtual void* getHandle() = 0;
+	};
+
 	class Window {
 		// Static
 		public:
@@ -15,7 +20,12 @@ namespace it {
 		// Object
 		private:
 			// Properties
-			void* backendObjectHandle{ nullptr };
+			BackendObjectHandle* backendObjectHandle{ nullptr };
+
+			// Properties
+			std::string title;
+			int x, y;
+			int width, height;
 
 		public:
 			// Constructor / Destructor
@@ -43,5 +53,10 @@ namespace it {
 			void setTitle(const std::string& title);
 			void setSize(int width, int height);
 			void setPosition(int x, int y);
+
+			// Feeders
+			void feedTitle(const std::string& title);
+			void feedSize(int width, int height);
+			void feedPosition(int x, int y);
 	};
 }

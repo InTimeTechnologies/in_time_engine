@@ -18,6 +18,7 @@ namespace it {
 	class GLFWBackend : public IPlatformBackend {
 		// Friends
 		friend class InTimeEngine;
+		friend class EngineConfigurator;
 
 		// Static
 		private:

@@ -111,10 +111,10 @@
     <ClCompile Include="..\dependencies\imgui\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui\imgui_widgets.cpp" />
     <ClCompile Include="backend\glfw\GLFWBackend.cpp" />
-    <ClCompile Include="backend\glfw\GLFWWindowBackend.cpp" />
     <ClCompile Include="in_time_engine\Component.cpp" />
     <ClCompile Include="in_time_engine\ComponentManager.cpp" />
     <ClCompile Include="in_time_engine\ComponentRegistry.cpp" />
+    <ClCompile Include="in_time_engine\EngineConfigurator.cpp" />
     <ClCompile Include="in_time_engine\EngineEvents.cpp" />
     <ClCompile Include="in_time_engine\GameObject.cpp" />
     <ClCompile Include="in_time_engine\GameObjectManager.cpp" />
@@ -138,6 +138,7 @@
     <ClCompile Include="in_time_engine\SceneManager.cpp" />
     <ClCompile Include="in_time_engine\Time.cpp" />
     <ClCompile Include="in_time_engine\Transform.cpp" />
+    <ClCompile Include="in_time_engine\window\Window.cpp" />
     <ClCompile Include="in_time_engine\window\WindowManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="UserComponentSerializer.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="in_time_engine\ComponentManager.h" />
     <ClInclude Include="in_time_engine\ComponentRegistry.h" />
     <ClInclude Include="in_time_engine\component\EmptyComponent.h" />
+    <ClInclude Include="in_time_engine\EngineConfigurator.h" />
     <ClInclude Include="in_time_engine\object\KeyPressPrinter.h" />
     <ClInclude Include="in_time_engine\component\PhysicsTransformation.h" />
     <ClInclude Include="in_time_engine\component\Transformation.h" />

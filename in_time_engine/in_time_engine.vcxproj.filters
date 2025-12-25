@@ -138,10 +138,13 @@
     <ClCompile Include="backend\glfw\GLFWBackend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="backend\glfw\GLFWWindowBackend.cpp">
+    <ClCompile Include="in_time_engine\window\WindowManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="in_time_engine\window\WindowManager.cpp">
+    <ClCompile Include="in_time_engine\EngineConfigurator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="in_time_engine\window\Window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -315,6 +318,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="in_time_engine\object\KeyPressPrinter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\EngineConfigurator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
