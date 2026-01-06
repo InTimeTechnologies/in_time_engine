@@ -1,107 +1,94 @@
-#include <in_time_engine/window/Window.h>
+#include "GLFWWindowBackend.h"
 
 // Dependencies | std
 #include <cassert>
 
-// Dependencies | glfw
-#include <GLFW/glfw3.h>
+// Dependencies | in_time_engine | window
+#include <in_time_engine/window/Window.h>
 
 // Dependencies | backend | glfw
-#include "GLFWBackend.h"
+#include "GLFWPlatformBackend.h"
 
 namespace it {
-	// Functions
-	static GLFWwindow* toGLFWWindow(void* pointer) {
-		assert(pointer != nullptr && "implementation pointer is nullptr.");
-		GLFWwindow* glfwWindow = reinterpret_cast<GLFWwindow*>(pointer);
+	// class GLFWWindowBackend
+
+	// Oject | public
+
+	// Constructor / Destructor
+	GLFWWindowBackend::GLFWWindowBackend(Window& owner) : IWindowBackend(owner) {
+		
+	}
+	GLFWWindowBackend::~GLFWWindowBackend() {
+		if (glfwWindow != nullptr) {
+			glfwDestroyWindow(glfwWindow);
+			glfwWindow = nullptr;
+		}
+	}
+
+	// IWIndowBackend | Getters
+	void* GLFWWindowBackend::getHandle() {
 		return glfwWindow;
 	}
 
-	// class Window
-
-	// Static | public
-
-	// Properties
-	int Window::s_defaultWidth = 800;
-	int Window::s_defaultHeight = 600;
-	std::string Window::s_defaultTitle = "GLFW Window";
-
-	// Object | public
-
-	// Constructor / Destructor
-	Window::Window() {
-		GLFWwindow* glfwWindow = glfwCreateWindow(s_defaultWidth, s_defaultHeight, s_defaultTitle.c_str(), nullptr, nullptr);
-		assert(glfwWindow != nullptr && "failed to create glfw window.");
-		glfwSetWindowUserPointer(glfwWindow, this);
-		glfwSetKeyCallback(glfwWindow, GLFWBackend::s_keyCallback);
-		backendObjectHandle = glfwWindow;
-
-		glfwMakeContextCurrent(glfwWindow);
+	std::string GLFWWindowBackend::getTitle() const {
+		return glfwGetWindowTitle(glfwWindow);
 	}
-	Window::Window(int width, int height, const std::string& title) {
-		GLFWwindow* glfwWindow = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
-		assert(glfwWindow != nullptr && "failed to create glfw window.");
-		glfwSetWindowUserPointer(glfwWindow, this);
-		glfwSetKeyCallback(glfwWindow, GLFWBackend::s_keyCallback);
-		backendObjectHandle = glfwWindow;
-
-		glfwMakeContextCurrent(glfwWindow);
-	}
-	Window::~Window() {
-		if (backendObjectHandle == nullptr)
-			return;
-		GLFWwindow* glfwWindow = reinterpret_cast<GLFWwindow*>(backendObjectHandle);
-		glfwDestroyWindow(glfwWindow);
-		glfwWindow = nullptr;
-	}
-
-	// Operators | equality
-	bool Window::operator==(const Window& other) const {
-		return backendObjectHandle == other.backendObjectHandle;
-	}
-	
-	// Getters
-	std::string Window::getTitle() const {
-		GLFWwindow* glfwWindow = toGLFWWindow(backendObjectHandle);
-		std::string title = glfwGetWindowTitle(glfwWindow);
-		return title;
-	}
-	int Window::getWidth() const {
-		GLFWwindow* glfwWindow = toGLFWWindow(backendObjectHandle);
-		int width, height;
-		glfwGetWindowSize(glfwWindow, &width, &height);
-		return width;
-	}
-	int Window::getHeight() const {
-		GLFWwindow* glfwWindow = toGLFWWindow(backendObjectHandle);
-		int width, height;
-		glfwGetWindowSize(glfwWindow, &width, &height);
-		return height;
-	}
-	int Window::getX() const {
-		GLFWwindow* glfwWindow = toGLFWWindow(backendObjectHandle);
+	int GLFWWindowBackend::getX() const {
 		int x, y;
 		glfwGetWindowPos(glfwWindow, &x, &y);
 		return x;
 	}
-	int Window::getY() const {
-		GLFWwindow* glfwWindow = toGLFWWindow(backendObjectHandle);
+	int GLFWWindowBackend::getY() const {
 		int x, y;
 		glfwGetWindowPos(glfwWindow, &x, &y);
 		return y;
 	}
+	int GLFWWindowBackend::getWidth() const {
+		int width, height;
+		glfwGetWindowPos(glfwWindow, &width, &height);
+		return width;
+	}
+	int GLFWWindowBackend::getHeight() const {
+		int width, height;
+		glfwGetWindowPos(glfwWindow, &width, &height);
+		return width;
+	}
 
-	// Setters
-	void Window::setTitle(const std::string& title) {
-		GLFWwindow* glfwWindow = toGLFWWindow(backendObjectHandle);
+	// IWIndowBackend | Setters
+	void GLFWWindowBackend::setTitle(const std::string& title) {
 		glfwSetWindowTitle(glfwWindow, title.c_str());
 	}
-	void Window::setSize(int width, int height) {
-		GLFWwindow* glfwWindow = toGLFWWindow(backendObjectHandle);
+	void GLFWWindowBackend::setPosition(int x, int y) {
+		glfwSetWindowPos(glfwWindow, x, y);
+	}
+	void GLFWWindowBackend::setSize(int width, int height) {
 		glfwSetWindowSize(glfwWindow, width, height);
 	}
-	void Window::setPosition(int width, int height) {
-		GLFWwindow* glfwWindow = toGLFWWindow(backendObjectHandle);
-		glfwSetWindowPos(glfwWindow, width, height);
+
+	// IWIndowBackend | Functions
+	void* GLFWWindowBackend::init() {
+		assert(glfwWindow == nullptr && "glfwWindow != nullptr, glfwWindow was previously created.");
+		glfwWindow = glfwCreateWindow(owner.getWidth(), owner.getHeight(), owner.getTitle().c_str(), nullptr, nullptr);
+		assert(glfwWindow != nullptr && "glfwWindow == nullptr, failed to create glfw window.");
+		if (glfwWindow == nullptr)
+			return nullptr;
+
+		glfwSetWindowPos(glfwWindow, owner.getX(), owner.getY());
+
+		// Set callbacks
+		GLFWPlatformBackend* platformBackend = GLFWPlatformBackend::s_getSingleton();
+
+		if (platformBackend->mouseKeyboardInput != nullptr)
+			glfwSetKeyCallback(glfwWindow, GLFWPlatformBackend::s_keyCallback);
+
+		return glfwWindow;
+	}
+	void GLFWWindowBackend::show() {
+		if (glfwWindow == nullptr)
+			init();
+		glfwShowWindow(glfwWindow);
+	}
+	void GLFWWindowBackend::hide() {
+		glfwHideWindow(glfwWindow);
 	}
 }

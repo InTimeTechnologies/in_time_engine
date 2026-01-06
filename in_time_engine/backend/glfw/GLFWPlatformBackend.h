@@ -10,24 +10,29 @@
 #include <in_time_engine/input/mouse_keyboard/MouseKeyboardInput.h>
 #include <in_time_engine/input/joystick/JoystickInput.h>
 
-namespace it {
+// Dependencies | in_time_engine | window | backend
+#include <in_time_engine/window/backend/IWindowPlatformBackend.h>
 
+// Dependencies | in_time_engine | backend | glfw
+#include "GLFWWindowBackend.h"
+
+namespace it {
 	// Functions
 	GLFWwindow* toGLFWWindow(void* backendObjectHandle);
 
-	class GLFWBackend : public IPlatformBackend {
+	class GLFWPlatformBackend : public IPlatformBackend, public IWindowPlatformBackend {
 		// Friends
-		friend class InTimeEngine;
 		friend class EngineConfigurator;
+		friend class GLFWWindowBackend;
 
 		// Static
 		private:
 			// Properties
-			static GLFWBackend* s_singleton;
+			static GLFWPlatformBackend* s_singleton;
 
 		public:
 			// Getters
-			static GLFWBackend* s_getSingleton();
+			static GLFWPlatformBackend* s_getSingleton();
 
 			// Functions
 			static KeyCode s_ToKeyCode(int glfwKey);
@@ -46,22 +51,28 @@ namespace it {
 			JoystickInput* joystickInput{ nullptr };
 
 		public:
-			GLFWBackend();
-			GLFWBackend(const GLFWBackend& other) = delete;
-			GLFWBackend(GLFWBackend&& other) noexcept = delete;
-			~GLFWBackend();
+			GLFWPlatformBackend();
+			GLFWPlatformBackend(const GLFWPlatformBackend& other) = delete;
+			GLFWPlatformBackend(GLFWPlatformBackend&& other) noexcept = delete;
+			~GLFWPlatformBackend();
 
 			// Operators | assignment
-			GLFWBackend& operator=(const GLFWBackend&) = delete;
-			GLFWBackend& operator=(GLFWBackend&& other) noexcept = delete;
+			GLFWPlatformBackend& operator=(const GLFWPlatformBackend&) = delete;
+			GLFWPlatformBackend& operator=(GLFWPlatformBackend&& other) noexcept = delete;
 
 			// Functions
+			void linkToMouseKeyboardInput(MouseKeyboardInput* mouseKeyboardInput);
+			void linkToJoystickInput(JoystickInput* joystickInput);
+
+			// Functions | IPlatformBackend
 			bool init() override;
 			bool deinit() override;
 			bool isInit() const override;
 			bool update() override;
 
-			void linkToMouseKeyboardInput(MouseKeyboardInput* mouseKeyboardInput);
-			void linkToJoystickInput(JoystickInput* joystickInput);
+			// Functions | IWindowPlatformBackend
+			IWindowBackend* createWindowBackend(Window& window) override;
+			void destroyWindowBackend(IWindowBackend* iWindowBackend) override;
+
 	};
 }

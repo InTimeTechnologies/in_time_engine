@@ -1,4 +1,4 @@
-#include "GLFWBackend.h"
+#include "GLFWPlatformBackend.h"
 
 // Dependencies | std
 #include <cassert>
@@ -16,22 +16,22 @@ namespace it {
 		return reinterpret_cast<GLFWwindow*>(backendObjectHandle);
 	}
 
-	// class GLFWBackend
+	// class GLFWPlatformBackend
 
 	// Static | private
 
 	// Properties
-	GLFWBackend* GLFWBackend::s_singleton{ nullptr };
+	GLFWPlatformBackend* GLFWPlatformBackend::s_singleton{ nullptr };
 
 	// Static | public
 
 	// Getters
-	GLFWBackend* GLFWBackend::s_getSingleton() {
+	GLFWPlatformBackend* GLFWPlatformBackend::s_getSingleton() {
 		return s_singleton;
 	}
 
 	// Functions
-	KeyCode GLFWBackend::s_ToKeyCode(int glfwKey) {
+	KeyCode GLFWPlatformBackend::s_ToKeyCode(int glfwKey) {
 		switch (glfwKey) {
 			case GLFW_KEY_SPACE:         return KeyCode::SPACE;
 			case GLFW_KEY_APOSTROPHE:    return KeyCode::APOSTROPHE;
@@ -157,7 +157,7 @@ namespace it {
 			default:                     return KeyCode::UNKNOWN;
 		}
 	}
-	Key::Action GLFWBackend::s_ToKeyAction(int glfwAction) {
+	Key::Action GLFWPlatformBackend::s_ToKeyAction(int glfwAction) {
 		switch (glfwAction) {
 			case GLFW_PRESS:   return Key::Action::PRESSED;
 			case GLFW_REPEAT:  return Key::Action::REPEAT;
@@ -165,7 +165,7 @@ namespace it {
 			default:           return Key::Action::UNKNOWN;
 		}
 	}
-	MouseButtonCode GLFWBackend::s_toMouseButtonCode(int glfwMouseButton) {
+	MouseButtonCode GLFWPlatformBackend::s_toMouseButtonCode(int glfwMouseButton) {
 		switch (glfwMouseButton) {
 			case GLFW_MOUSE_BUTTON_1: return MouseButtonCode::BUTTON_CODE_1;
 			case GLFW_MOUSE_BUTTON_2: return MouseButtonCode::BUTTON_CODE_2;
@@ -178,7 +178,7 @@ namespace it {
 			default:                  return MouseButtonCode::UNKNOWN;
 		}
 	}
-	MouseButton::Action GLFWBackend::s_toMouseButtonAction(int glfwAction) {
+	MouseButton::Action GLFWPlatformBackend::s_toMouseButtonAction(int glfwAction) {
 		switch (glfwAction) {
 			case GLFW_PRESS:
 				return MouseButton::Action::PRESSED;
@@ -190,8 +190,8 @@ namespace it {
 	}
 
 	// Callbacks
-	void GLFWBackend::s_keyCallback(GLFWwindow* glfwWindow, int glfwKey, int glfwScanCode, int glfwAction, int glfwMods) {
-		assert(GLFWBackend::s_singleton != nullptr && "GLFWBackend::s_singleton is nullptr");
+	void GLFWPlatformBackend::s_keyCallback(GLFWwindow* glfwWindow, int glfwKey, int glfwScanCode, int glfwAction, int glfwMods) {
+		assert(GLFWPlatformBackend::s_singleton != nullptr && "GLFWPlatformBackend::s_singleton is nullptr");
 		if (s_singleton == nullptr)
 			return;
 
@@ -203,8 +203,8 @@ namespace it {
 		Key::Action keyAction = s_ToKeyAction(glfwAction);
 		mouseKeyboardInput->feedAction(keyCode, keyAction);
 	}
-	void GLFWBackend::s_mouseButtonCallback(GLFWwindow* glfwWindow, int glfwMouseButton, int glfwAction, int glfwMods) {
-		assert(GLFWBackend::s_singleton != nullptr && "GLFWBackend::s_singleton is nullptr");
+	void GLFWPlatformBackend::s_mouseButtonCallback(GLFWwindow* glfwWindow, int glfwMouseButton, int glfwAction, int glfwMods) {
+		assert(GLFWPlatformBackend::s_singleton != nullptr && "GLFWPlatformBackend::s_singleton is nullptr");
 		if (s_singleton == nullptr)
 			return;
 
@@ -220,32 +220,40 @@ namespace it {
 	// Object | public
 
 	// Constructor / Destructor
-	GLFWBackend::GLFWBackend() {
+	GLFWPlatformBackend::GLFWPlatformBackend() {
 		assert(s_singleton == nullptr && "s_singleton already exists.");
 		if (s_singleton == nullptr)
 			s_singleton = this;
 	}
-	GLFWBackend::~GLFWBackend() {
+	GLFWPlatformBackend::~GLFWPlatformBackend() {
 		deinit();
 	}
 
 	// Functions
-	bool GLFWBackend::init() {
+	void GLFWPlatformBackend::linkToMouseKeyboardInput(MouseKeyboardInput* mouseKeyboardInput) {
+		this->mouseKeyboardInput = mouseKeyboardInput;
+	}
+	void GLFWPlatformBackend::linkToJoystickInput(JoystickInput* joystickInput) {
+		this->joystickInput = joystickInput;
+	}
+
+	// IPlatformBackend | Functions
+	bool GLFWPlatformBackend::init() {
 		// Init
 		int initiationSuccess = glfwInit();
 		assert(initiationSuccess && "glfw failed to initialize.");
-		if (!initiationSuccess)
-			return false;
+		return initiationSuccess;
 	}
-	bool GLFWBackend::deinit() {
+	bool GLFWPlatformBackend::deinit() {
 		if (this != s_singleton)
 			return false;
 		glfwTerminate();
+		return true;
 	}
-	bool GLFWBackend::isInit() const {
+	bool GLFWPlatformBackend::isInit() const {
 		return this == s_singleton;
 	}
-	bool GLFWBackend::update() {
+	bool GLFWPlatformBackend::update() {
 		assert(this == s_singleton && "glfw backend attempting to update is not the singleton.");
 		if (this != s_singleton)
 			return false;
@@ -256,17 +264,21 @@ namespace it {
 		glfwPollEvents(); // TODO: Update keys through callbacks
 		// TODO: Update joysticks
 
+		return true;
 	}
 
-	void GLFWBackend::linkToMouseKeyboardInput(MouseKeyboardInput* mouseKeyboardInput) {
-		this->mouseKeyboardInput = mouseKeyboardInput;
+	// IWindowPlatformBackend | Functions
+	IWindowBackend* GLFWPlatformBackend::createWindowBackend(Window& owner) {
+		GLFWWindowBackend* glfwWindowBackend = new GLFWWindowBackend(owner);
+		return glfwWindowBackend;
 	}
-	void GLFWBackend::linkToJoystickInput(JoystickInput* joystickInput) {
-		this->joystickInput = joystickInput;
+	void GLFWPlatformBackend::destroyWindowBackend(IWindowBackend* iWindowBackend) {
+		assert(iWindowBackend != nullptr && "iWindowBackend == nullptr");
+		delete iWindowBackend;
 	}
 
 	// Object | private
-	//void GLFWBackend::updateJoysticks() {
+	//void GLFWPlatformBackend::updateJoysticks() {
 	//	if (joystickInput == nullptr)
 	//		return;
 

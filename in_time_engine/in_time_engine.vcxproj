@@ -48,6 +48,7 @@
     <Import Project="..\property_sheets\termcolor\termcolor_properties_include.props" />
     <Import Project="..\property_sheets\json\json_properties.props" />
     <Import Project="..\property_sheets\vulkan\vulkan_properties.props" />
+    <Import Project="..\property_sheets\build_event_properties.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -59,8 +60,8 @@
     <Import Project="..\property_sheets\stb\stb_properties.props" />
     <Import Project="..\property_sheets\termcolor\termcolor_properties_include.props" />
     <Import Project="..\property_sheets\json\json_properties.props" />
-    <Import Project="..\property_sheets\build\build_properties_build_dependencies.props" />
     <Import Project="..\property_sheets\vulkan\vulkan_properties.props" />
+    <Import Project="..\property_sheets\build_event_properties.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -110,7 +111,10 @@
     <ClCompile Include="..\dependencies\imgui\imgui\imgui_draw.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui\imgui_tables.cpp" />
     <ClCompile Include="..\dependencies\imgui\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="backend\glfw\GLFWBackend.cpp" />
+    <ClCompile Include="backend\glfw\GLFWPlatformBackend.cpp" />
+    <ClCompile Include="backend\glfw\GLFWWindowBackend.cpp" />
+    <ClCompile Include="backend\headless\SimulatedWindowBackend.cpp" />
+    <ClCompile Include="backend\headless\SimulatedWindowPlatformBackend.cpp" />
     <ClCompile Include="in_time_engine\Component.cpp" />
     <ClCompile Include="in_time_engine\ComponentManager.cpp" />
     <ClCompile Include="in_time_engine\ComponentRegistry.cpp" />
@@ -150,7 +154,10 @@
     <ClCompile Include="vulkan_engine\VulkanEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="backend\glfw\GLFWBackend.h" />
+    <ClInclude Include="backend\glfw\GLFWPlatformBackend.h" />
+    <ClInclude Include="backend\glfw\GLFWWindowBackend.h" />
+    <ClInclude Include="backend\headless\SimulatedWindowBackend.h" />
+    <ClInclude Include="backend\headless\SimulatedWindowPlatformBackend.h" />
     <ClInclude Include="in_time_engine\Component.h" />
     <ClInclude Include="in_time_engine\ComponentManager.h" />
     <ClInclude Include="in_time_engine\ComponentRegistry.h" />
@@ -196,6 +203,8 @@
     <ClInclude Include="in_time_engine\Time.h" />
     <ClInclude Include="in_time_engine\Transform.h" />
     <ClInclude Include="in_time_engine\VirtualResource.h" />
+    <ClInclude Include="in_time_engine\window\backend\IWindowBackend.h" />
+    <ClInclude Include="in_time_engine\window\backend\IWindowPlatformBackend.h" />
     <ClInclude Include="in_time_engine\window\Window.h" />
     <ClInclude Include="in_time_engine\window\WindowManager.h" />
     <ClInclude Include="Test.h" />

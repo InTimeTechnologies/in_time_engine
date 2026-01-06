@@ -3,34 +3,36 @@
 // Dependencies | std
 #include <string>
 
-namespace it {
-	struct BackendObjectHandle {
-		// Getters
-		virtual void* getHandle() = 0;
-	};
+// Dependencies | in_time_engine | Window
+#include "backend/IWindowBackend.h"
+#include "backend/IWindowPlatformBackend.h"
 
+namespace it {
 	class Window {
+		// Friends
+		friend class WindowManager;
+
 		// Static
 		public:
 			// Properties
-			static int s_defaultWidth;
-			static int s_defaultHeight;
 			static std::string s_defaultTitle;
+			static int s_defaultX, s_defaultY;
+			static int s_defaultWidth, s_defaultHeight;
 
 		// Object
 		private:
 			// Properties
-			BackendObjectHandle* backendObjectHandle{ nullptr };
+			IWindowBackend* iWindowBackend{ nullptr };
 
 			// Properties
-			std::string title;
-			int x, y;
-			int width, height;
+			std::string title{ s_defaultTitle };
+			int x{ s_defaultX }, y{ s_defaultY };
+			int width{ s_defaultWidth }, height{ s_defaultHeight };
+			bool visible{ false };
 
 		public:
 			// Constructor / Destructor
 			Window();
-			Window(int width, int height, const std::string& title);
 			Window(const Window& other) = delete;
 			Window(Window&& other) = delete;
 			~Window();
@@ -44,19 +46,18 @@ namespace it {
 
 			// Getters
 			std::string getTitle() const;
-			int getWidth() const;
-			int getHeight() const;
 			int getX() const;
 			int getY() const;
+			int getWidth() const;
+			int getHeight() const;
 
 			// Setters
 			void setTitle(const std::string& title);
-			void setSize(int width, int height);
 			void setPosition(int x, int y);
+			void setSize(int width, int height);
 
-			// Feeders
-			void feedTitle(const std::string& title);
-			void feedSize(int width, int height);
-			void feedPosition(int x, int y);
+			// Functions
+			void show();
+			void hide();
 	};
 }

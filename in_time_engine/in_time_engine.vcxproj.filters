@@ -135,7 +135,7 @@
     <ClCompile Include="in_time_engine\input\joystick\JoystickInput.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="backend\glfw\GLFWBackend.cpp">
+    <ClCompile Include="backend\glfw\GLFWPlatformBackend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="in_time_engine\window\WindowManager.cpp">
@@ -145,6 +145,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="in_time_engine\window\Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="backend\glfw\GLFWWindowBackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="backend\headless\SimulatedWindowPlatformBackend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="backend\headless\SimulatedWindowBackend.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -305,7 +314,7 @@
     <ClInclude Include="in_time_engine\input\joystick\JoystickInput.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="backend\glfw\GLFWBackend.h">
+    <ClInclude Include="backend\glfw\GLFWPlatformBackend.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="in_time_engine\IPlatformBackend.h">
@@ -321,6 +330,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="in_time_engine\EngineConfigurator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\window\backend\IWindowBackend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="in_time_engine\window\backend\IWindowPlatformBackend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\glfw\GLFWWindowBackend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\headless\SimulatedWindowPlatformBackend.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="backend\headless\SimulatedWindowBackend.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

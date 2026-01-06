@@ -1,18 +1,26 @@
 #include "WindowManager.h"
 
+// Dependencies | std
+#include <cassert>
+
 namespace it {
 	// class WindowManager
 
 	// Object | public
 
 	// Functions
-	Window& WindowManager::createWindow() {
+	Window* WindowManager::createWindow() {
+		// iWindowPlatformBackend error check
+		assert(iWindowPlatformBackend != nullptr && "iWindowPlatformBackend == nullptr");
+		if (iWindowPlatformBackend == nullptr)
+			return nullptr;
+
+		// Create window and link backend
 		Window& window = windowList.emplace_back();
-		return window;
-	}
-	Window& WindowManager::createWindow(int width, int height, const std::string& title) {
-		Window& window = windowList.emplace_back(width, height, title);
-		return window;
+		if (iWindowPlatformBackend != nullptr) {
+			window.iWindowBackend = iWindowPlatformBackend->createWindowBackend(window);
+		}
+		return &window;
 	}
 	void WindowManager::destroyWindow(Window& window) {
 		windowList.remove(window);

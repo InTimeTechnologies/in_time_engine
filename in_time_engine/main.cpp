@@ -4,21 +4,21 @@
 // Dependencies | test
 #include "Test.h"
 
-// Game
-#include "backend/glfw/GLFWBackend.h"
+// Dependencies | in_time_engine
+#include "in_time_engine/EngineConfigurator.h"
 
 int main(int argc, char* argv[]) {
     std::cout << "Program operating" << std::endl;
 
     it::InTimeEngine* inTimeEngine = new it::InTimeEngine();
 
-    it::GLFWBackend glfwBackend{};
-    glfwBackend.init();
-    glfwBackend.linkToMouseKeyboardInput(&inTimeEngine->mouseKeyboardInput);
-    glfwBackend.linkToJoystickInput(&inTimeEngine->joystickInput);
-    inTimeEngine->inputEventBackend = &glfwBackend;
+    bool useWindowBackend = true;
+    bool forwardMouseKeyboardInput = true;
+    bool forwardJoystickInput = true;
+    it::EngineConfigurator::s_linkEngineToGLFW(*inTimeEngine, useWindowBackend, forwardMouseKeyboardInput, forwardJoystickInput);
 
-    inTimeEngine->windowManager.createWindow();
+    it::Window* window = inTimeEngine->windowManager.createWindow();
+    window->show();
     it::KeyPressPrinter keyPrinter{};
 
     inTimeEngine->run();

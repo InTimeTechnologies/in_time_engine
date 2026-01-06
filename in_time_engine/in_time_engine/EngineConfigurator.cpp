@@ -1,8 +1,11 @@
 #include "EngineConfigurator.h"
 
+// Dependencies | std
+#include <cassert>
+
 // Dependencies | in_time_engine | backend
 #if defined(GLFW)
-#include "backend/glfw/GLFWBackend.h"
+#include "backend/glfw/GLFWPlatformBackend.h"
 #endif
 
 namespace it {
@@ -44,30 +47,23 @@ namespace it {
 	const bool S_DIRECTX_PRESENT = false;
 #endif
 
-	// Object | public
-
-	// Constructor / Destructor
-	EngineConfigurator::~EngineConfigurator() {
-		if (glfwBackend != nullptr) {
-			delete glfwBackend;
-			glfwBackend = nullptr;
-		}
-	}
-
 	// Functions
-	bool EngineConfigurator::linkEngineToGLFW(InTimeEngine& engine, bool useMouseKeyboard, bool useJoystick) {
+	bool EngineConfigurator::s_linkEngineToGLFW(InTimeEngine& engine, bool useWindowBackend, bool forwardMouseKeyboardInput, bool forwardJoystickInput) {
 #if defined(GLFW)
-		GLFWBackend* backend = new GLFWBackend();
+		GLFWPlatformBackend* backend = new GLFWPlatformBackend();
 		bool glfwInitiatedSuccessfully = backend->init();
 		assert(glfwInitiatedSuccessfully && "Failed to initiate glfw.");
 		if (!glfwInitiatedSuccessfully)
 			return false;
 
-		backend->joystickInput = &engine.joystickInput;
-		backend->mouseKeyboardInput = &engine.mouseKeyboardInput;
 		engine.inputEventBackend = backend;
 
-		this->glfwBackend = backend;
+		if (useWindowBackend)
+			engine.windowManager.iWindowPlatformBackend = backend;
+		if (forwardMouseKeyboardInput)
+			backend->joystickInput = &engine.joystickInput;
+		if (forwardJoystickInput)
+			backend->mouseKeyboardInput = &engine.mouseKeyboardInput;
 
 		return true;
 #else
